@@ -21,7 +21,7 @@ $ pip install .
 
 ## Workflow outline
 
-<img src="https://github.com/PennyHow/GrIML/blob/main/other/reporting/figures/griml_workflow_with_gee.png?raw=true" alt="The GrIML workflow." width="1500" align="aligncenter" />
+<img src="https://github.com/GEUS-Glaciology-and-Climate/GrIML/blob/main/other/reporting/figures/griml_workflow_with_gee.png?raw=true" alt="The GrIML workflow." width="1500" align="aligncenter" />
 
 **GrIML** proposes to examine ice marginal lake changes across Greenland using a multi-sensor and multi-method remote sensing approach to better address their influence on sea level contribution forecasting.
 
