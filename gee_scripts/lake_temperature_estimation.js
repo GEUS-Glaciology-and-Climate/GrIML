@@ -65,7 +65,6 @@ function getImages(aoi) {
   return L9.merge(L8).merge(L7).merge(L5).merge(L4);
 }
 
-
 //********* DERIVE ST FUNCTION ******************//
 function applyWaterCorrection(image) {
   var waterBands = (image.select('ST').multiply(0.00341802).add(149.0)) // Scale factor
@@ -74,50 +73,66 @@ function applyWaterCorrection(image) {
   return image.addBands(waterBands, null, true);
 }
 
-
-//************ DERIVE AND EXPORT FUNCTION ******************//
+//************ DERIVE AND ACCUMULATE FUNCTION ******************//
 function getST(feature, id) {
-
-  var aoi = feature.geometry()
-  var pt = aoi.buffer(30);
+  var aoi = feature.geometry();
+  var pt = aoi.buffer(-30);
 
   var landsatWT = getImages(aoi).map(applyWaterCorrection);
 
-  var values = landsatWT.map(function(image){
+  var values = landsatWT.map(function(image) {
     return ee.Feature(null, image.reduceRegion(ee.Reducer.mean(), pt, 30))
                 .set('lake_id', id)
                 .set('system:time_start', image.get('system:time_start'))
                 .set('system:index', image.get('system:index'))
-                .set('date', ee.Date(image.get('system:time_start')).format('yyy-MM-dd'))
+                .set('date', ee.Date(image.get('system:time_start')).format('yyyy-MM-dd'))
                 .set('ST_max', image.reduceRegion(ee.Reducer.max(), pt, 30).values(['ST']))
                 .set('ST_min', image.reduceRegion(ee.Reducer.min(), pt, 30).values(['ST']))    
                 .set('ST_stddev', image.reduceRegion(ee.Reducer.stdDev(), pt, 30).values(['ST']))
-                .set('ST_count', image.reduceRegion(ee.Reducer.count(), pt, 30).values(['ST']))
-  });
-  
-  var name_file = id + '_lake_timeseries'
-  Export.table.toDrive({
-    collection: values, 
-    description: name_file,
-    folder: 'ST_IIML_poly', 
-    fileFormat: 'CSV', 
-    selectors: ['lake_id','system:time_start','date','system:index','ST','ST_max','ST_min','ST_stddev','ST_count','QA_PIXEL']
+                .set('ST_count', image.reduceRegion(ee.Reducer.count(), pt, 30).values(['ST']));
   });
 
+  return values;
 }
 
-//************ ITERATE OVER ALL PTS ******************//
-print(table)
+//************ ACCUMULATE ALL FEATURES INTO A SINGLE COLLECTION (Batch Processing) ******************//
 
-//var first = table.aggregate_array('LakeID').get(0);
-//print(first);
-//var t = table.filter(ee.Filter.eq('LakeID', first));
-//getST(t, first);
+// Function to process a batch of lakes and export with a unique filename
+function processBatch(ids, batchNumber) {
+  var allValues = ee.FeatureCollection([]);
+  
+  ids.map(function(id) {
+    var t = table.filter(ee.Filter.eq('lake_id', id));
+    var values = getST(t, id);
+    allValues = allValues.merge(values);
+  });
 
-table.sort('LakeID').aggregate_array('LakeID').evaluate(function (ids) {
-  ids.map(function (id) {
-    var t = table.filter(ee.Filter.eq('LakeID', id))
-    getST(t, id)
-  })
+  // Generate a unique filename for each batch using the batchNumber
+  var fileName = 'ST_lake_timeseries_batch_' + batchNumber;
+  
+  Export.table.toDrive({
+    collection: allValues,
+    description: fileName,  // Use the unique fileName for each batch
+    folder: 'out', 
+    fileFormat: 'CSV', 
+    selectors: ['lake_id', 'system:time_start', 'date', 'system:index', 'ST', 'ST_max', 'ST_min', 'ST_stddev', 'ST_count', 'QA_PIXEL']
+  });
+}
+
+//************ ITERATE OVER ALL LAKES IN BATCHES AND EXPORT WITH UNIQUE NAMES ******************//
+
+// Define batch size (number of lakes per batch)
+var batchSize = 50;  // You can adjust this batch size based on your testing and performance
+
+table.sort('lake_id').aggregate_array('lake_id').evaluate(function(ids) {
+  var totalLakes = ids.length;
+  var batchNumber = 0;
+
+  // Loop over the lakes, processing them in batches
+  for (var i = 0; i < totalLakes; i += batchSize) {
+    var batchIds = ids.slice(i, i + batchSize);
+    batchNumber++;
+    processBatch(batchIds, batchNumber);  // Pass batchNumber to create unique filenames for each batch
+  }
 });
 
