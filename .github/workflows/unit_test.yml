@@ -30,4 +30,4 @@ jobs:
       - name: Run unit tests
         shell: bash
         run: |
-          python3 -m unittest discover griml
+          python3 src/griml/test/test.py
