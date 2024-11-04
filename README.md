@@ -1,4 +1,4 @@
-# Investigating Greenland's ice marginal lakes under a changing climate (GrIML)
+# GrIML - Investigating Greenland's ice marginal lakes under a changing climate
 
 [![PyPI version](https://badge.fury.io/py/griml.svg)](https://badge.fury.io/py/griml) [![DOI](https://zenodo.org/badge/444752900.svg)](https://zenodo.org/badge/latestdoi/444752900) [![Documentation Status](https://readthedocs.org/projects/griml/badge/?version=latest)](https://griml.readthedocs.io/en/latest/?badge=latest) [![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2FPennyHow%2FGrIML%2Fbadge%3Fref%3Dmain&style=flat)](https://actions-badge.atrox.dev/PennyHow/GrIML/goto?ref=main)
 
