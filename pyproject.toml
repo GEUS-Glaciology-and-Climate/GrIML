@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "griml"
+version = "0.1.1"
+description = "A workflow for classifying ice marginal lakes from satellite imagery and compiling lake inventories"
+readme = "README.md"
+readme-content-type = "text/markdown"
+authors = [{name = "Penelope How", email = "pho@geus.dk"}]
+license = {text = "MIT"}
+keywords = ["glaciology", "remote sensing", "cryosphere", "ice marginal lake", "ESA"]
+classifiers = [
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "License :: OSI Approved :: MIT License",
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "Natural Language :: English",
+    "Topic :: Scientific/Engineering",
+    "Operating System :: OS Independent"
+]
+dependencies = [
+    "geopandas",
+    "pandas",
+    "scipy",
+    "Shapely",
+    "rasterio"
+]
+python_requires = ">=3.8"
+
+[project.urls]
+"Homepage" = "https://github.com/GEUS-Glaciology-and-Climate/GrIML"
+"Bug Tracker" = "https://github.com/GEUS-Glaciology-and-Climate/GrIML/issues"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+packages = ["griml"]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
