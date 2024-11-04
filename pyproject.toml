@@ -40,3 +40,5 @@ package-dir = {"" = "src"}
 packages = ["griml"]
 include-package-data = true
 
+[tool.setuptools.packages.find]
+where = ["src"]
