@@ -11,7 +11,7 @@ GrIML's convert module is used to convert binary raster classifications of water
 from griml.convert import convert
 ```
 
-Next we need to define some input variables - the projection, band information and date range of the input raster. If you have followed the [GEE script for classifying lakes](https://github.com/PennyHow/GrIML/blob/main/gee_scripts/lake_classification.js) available through the GrIMl repo, then each outputted raster band represents classifications using one of three approaches:
+Next we need to define some input variables - the projection, band information and date range of the input raster. If you have followed the [GEE script for classifying lakes](https://github.com/GEUS-Glaciology-and-Climate/GrIML/blob/main/gee_scripts/lake_classification.js) available through the GrIMl repo, then each outputted raster band represents classifications using one of three approaches:
 
 1. Multi-spectral classification from Sentinel-2
 2. Backscatter threshold classification from Sentinel-1

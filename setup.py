@@ -13,7 +13,7 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/PennyHow/GrIML",
     project_urls={
-        "Bug Tracker": "https://github.com/PennyHow/GrIML/issues",
+        "Bug Tracker": "https://github.com/GEUS-Glaciology-and-Climate/GrIML/issues",
     },
     keywords="glaciology ice lake ESA",
     classifiers=[

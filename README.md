@@ -25,7 +25,7 @@ $ pip install .
 
 **GrIML** proposes to examine ice marginal lake changes across Greenland using a multi-sensor and multi-method remote sensing approach to better address their influence on sea level contribution forecasting.
 
-Ice marginal lakes are detected using a remote sensing approach, based on offline workflows developed within the [ESA Glaciers CCI](https://catalogue.ceda.ac.uk/uuid/7ea7540135f441369716ef867d217519") (Option 6, An Inventory of Ice-Marginal Lakes in Greenland) ([How et al., 2021](https://www.nature.com/articles/s41598-021-83509-1)). Initial classifications are performed on Google Earth Engine with the scripts available [here](https://github.com/PennyHow/GrIML/tree/main/gee_scripts). Lake extents are defined through a multi-sensor approach using:
+Ice marginal lakes are detected using a remote sensing approach, based on offline workflows developed within the [ESA Glaciers CCI](https://catalogue.ceda.ac.uk/uuid/7ea7540135f441369716ef867d217519") (Option 6, An Inventory of Ice-Marginal Lakes in Greenland) ([How et al., 2021](https://www.nature.com/articles/s41598-021-83509-1)). Initial classifications are performed on Google Earth Engine with the scripts available [here](https://github.com/GEUS-Glaciology-and-Climate/GrIML/tree/main/gee_scripts). Lake extents are defined through a multi-sensor approach using:
 
 - Multi-spectral indices classification from Sentinel-2 optical imagery
 - Backscatter classification from Sentinel-1 SAR (synthetic aperture radar) imagery

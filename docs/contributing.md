@@ -2,7 +2,7 @@
 
 ## Bug reports and enhancement requests
 
-Bug reports are essential to improving the stability and usability of the GrIML processing package. These should be raised on [GrIML’s issues forum](https://github.com/PennyHow/GrIML/issues). A complete and reproducible report is essential for bugs to be resolved easily, therefore bug reports must:
+Bug reports are essential to improving the stability and usability of the GrIML processing package. These should be raised on [GrIML’s issues forum](https://github.com/GEUS-Glaciology-and-Climate/GrIML/issues). A complete and reproducible report is essential for bugs to be resolved easily, therefore bug reports must:
 
 - Include a concise and self-contained Python snippet reproducing the problem
 - Include a description of how your GrIML configuration is set up, such as from pip install or repository cloning/forking. If installed from pip or locally built, you can find the version of GrIML you are using with the following function
