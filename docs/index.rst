@@ -6,14 +6,27 @@
 GrIML
 =====
 
-A Python package for classifying lakes and compiling lake inventories, under the GrIML project (Investigating Greenland's ice marginal lakes under a changing climate).
+The **GrIML** processing package is for classifying water bodies from satellite imagery using a multi-sensor, multi-method remote sensing approach. It has been used to produce the Greenland ice marginal lake inventory series, which maps the presence and extents of water bodies across Greenland that share a margin with the Greenland Ice Sheet and/or the surroudning ice caps and periphery glaciers since 2016. This workflow is part of the `ESA GrIML project <https://eo4society.esa.int/projects/griml/`_ (Investigating Greenland's ice marginal lakes under a changing climate).
+\
+If the GrIML package or the Greenland ice marginal lake inventory series are presented or used to support results of any kind, please include references to the applicable publications:
+
+- *How, P. et al. (2024) "Greenland Ice Marginal Lake Inventory annual time-series Edition 1". GEUS Dataverse. `https://doi.org/10.22008/FK2/MBKW9N <https://doi.org/10.22008/FK2/MBKW9N>`_*
+- *How, P. et al. (2021) "Greenland-wide inventory of ice marginal lakes using a multi-method approach". Sci. Rep. 11, 4481. `https://doi.org/10.1038/s41598-021-83509-1 <https://doi.org/10.1038/s41598-021-83509-1>`_*
+- *How, P. et al. "Greenland ice marginal lake inventory series from 2016 to 2023". In Prep.*
+- *How, P. "A Python package for investigating Greenland's ice marginal lakes under a changing climate". In Prep.*
+
+And include the following statement in the acknowledgments:
+
+*"Ice marginal lake data provided by the European Space Agency (ESA), and the Programme for Monitoring of the Greenland Ice Sheet (PROMICE) at the Geological Survey of Denmark and Greenland (GEUS) (`https://doi.org/10.22008/FK2/MBKW9N <https://doi.org/10.22008/FK2/MBKW9N>`_)."*
+
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
    
    installation
-   tutorials
+   tutorials-processing
+   tutorials-data
    background
    contributing
    acknowledgments

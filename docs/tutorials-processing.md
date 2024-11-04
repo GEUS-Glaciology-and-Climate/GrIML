@@ -1,4 +1,4 @@
-# Tutorials
+# Processing tutorials
 
 The following tutorial steps make up the full workflow for post-processing of raster classifications to a compiled, production-ready inventory of ice marginal lakes.
 
