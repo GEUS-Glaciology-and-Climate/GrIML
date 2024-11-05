@@ -28,7 +28,7 @@ def assign_id(gdf, col_name='unique_id'):
     n, ids = connected_components(overlap_matrix)
     ids=ids+1
     
-    # Assign ids and realign geoedataframe index 
+    # Assign ids and realign geodataframe index 
     gdf[col_name]=ids
     gdf = gdf.sort_values(col_name)
     gdf.reset_index(inplace=True, drop=True) 
