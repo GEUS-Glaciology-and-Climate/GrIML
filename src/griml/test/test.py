@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
 import unittest, tempfile, rasterio, os
 from rasterio.transform import from_origin
 import geopandas as gpd
@@ -12,15 +15,15 @@ class TestGrIML(unittest.TestCase):
     '''Unittest for the GrIML post-processing workflow'''
 
     def setUp(self):
-        # Set up temporary directories
+        '''Set up temporary directories'''
         self.temp_dir = tempfile.TemporaryDirectory()
         
     def tearDown(self):
-        # Clean up temporary files
+        '''Clean up temporary files'''
         self.temp_dir.cleanup()
 
     def create_sample_raster(self, filepath):
-    # Generate a small synthetic raster file with three bands
+        '''Generate a small synthetic raster file with three bands'''
         transform = from_origin(0, 10, 0.1, 0.1)  # Top-left origin, 0.1 cell size
         with rasterio.open(
             filepath, 'w',
@@ -33,7 +36,7 @@ class TestGrIML(unittest.TestCase):
             dst.write(data)
         
     def create_sample_pointfile(self, filepath, num_features=5):
-        # Generate a synthetic GeoDataFrame with simple point geometries
+        '''Generate a synthetic GeoDataFrame with simple point geometries'''
         data = {
             'geometry': [Point(x, y) for x, y in zip(range(num_features), range(num_features))],
             'id': [int(i) for i in range(num_features)],
@@ -44,10 +47,9 @@ class TestGrIML(unittest.TestCase):
         gdf.reset_index(drop=True, inplace=True)
         gdf.set_index("row_id", inplace=True)
         gdf.to_file(filepath)
-        # return gdf
 
     def create_sample_polyfile(self, filepath, num_features=5, side_length=1.0):
-        # Generate a synthetic GeoDataFrame with square polygon geometries
+        '''Generate a synthetic GeoDataFrame with square polygon geometries'''
         half_side = side_length / 2
         data = {
             'geometry': [
@@ -73,7 +75,6 @@ class TestGrIML(unittest.TestCase):
         gdf.reset_index(drop=True, inplace=True)
         gdf.set_index("row_id", inplace=True)
         gdf.to_file(filepath)
-        # return gdf
     
     def test_convert(self):
         '''Test vector to raster conversion''' 
