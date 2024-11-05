@@ -44,6 +44,7 @@ class TestGrIML(unittest.TestCase):
         gdf.reset_index(drop=True, inplace=True)
         gdf.set_index("row_id", inplace=True)
         gdf.to_file(filepath)
+        # return gdf
 
     def create_sample_polyfile(self, filepath, num_features=5, side_length=1.0):
         # Generate a synthetic GeoDataFrame with square polygon geometries
@@ -72,6 +73,7 @@ class TestGrIML(unittest.TestCase):
         gdf.reset_index(drop=True, inplace=True)
         gdf.set_index("row_id", inplace=True)
         gdf.to_file(filepath)
+        # return gdf
     
     def test_convert(self):
         '''Test vector to raster conversion''' 
