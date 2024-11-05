@@ -2,9 +2,11 @@
 
 import numpy as np
 import geopandas as gp
+import glob
+from pathlib import Path
 
 
-def general_stats(geofile, outfile): 
+def general_stats(file1, outfile=None): 
     '''Calculate general statistics on a lake inventory file
     
     Parameters
@@ -14,81 +16,98 @@ def general_stats(geofile, outfile):
     outfile : str
         Outputted file name for general statistics
     '''
-    
-    #Read file as geopandas index
+    print('Retrieving lake data...') 
     geofile = gp.read_file(file1)
-    agg_geofile = geofile.dissolve(by='unique_id')
+    geofile = geofile.sort_values('region')    
+    uniquebasin = list(geofile['region'].unique())
+    uniquesource = list(geofile['source'].unique())
+    
+    print('Aggregating lake data...')
+    agg_geofile = geofile.dissolve(by='lake_id')
+    agg_geofile['area_sqkm']=[g.area/10**6 for g in list(agg_geofile['geometry'])]
+    agg_geofile['length_km']=[g.length/1000 for g in list(agg_geofile['geometry'])]
+    agg_geofile.sort_values('region')  
 
-    print('\nRetrieving lake data...')
+    print('\nStarting general statistics...')    
+    readout=''
+    readout=readout+'Total number of detected lakes: ' + str(len(list(geofile['lake_id']))) + '\n'
+    readout=readout+'Total number of unique lakes: ' + str(geofile['lake_id'].max()) + '\n\n'
+
+    # Total lake count for each ice sheet sector
+    geofile_icesheet = geofile[geofile['margin'] == 'ICE_SHEET']
+    agggeofile_icesheet = agg_geofile[agg_geofile['margin'] == 'ICE_SHEET']
+    readout=readout+'Ice Sheet total lake count\n' 
+    for i in uniquebasin:
+        readout=readout+i + ' total lake count: ' + str(geofile_icesheet['region'].value_counts()[i]) + '\n'
+    readout=readout+'Ice sheet total lake count: ' + str(len(geofile_icesheet))
+    readout=readout+'\n\n'
     
-    #Get data from columns
-    geofile = geofile.sort_values('drainageba')
-    geofile_id = geofile['unique_id'].tolist()              #Get lake IDs
-    geofile_uncertain = geofile['certainty'].tolist()       #Get lake uncertainty
-    geofile_source = geofile['source'].tolist()             #Get lake source
-    geofile_basin = geofile['drainageba'].tolist()          #Get lake location
-    geofile['area'] = geofile['geometry'].area/10**6
+    # Unique lake count for each ice sheet sector
+    readout=readout+'Ice Sheet unique lake count\n' 
+    for i in uniquebasin:
+        readout=readout+i + ' unique lake count: ' + str(agggeofile_icesheet['region'].value_counts()[i]) + '\n'
+    readout=readout+'Ice sheet total unique lake count: ' + str(len(agggeofile_icesheet ))
+    readout=readout+'\n\n'
+
+    # Total lake count for each ice cap sector
+    geofile_icecap = geofile[geofile['margin'] == 'ICE_CAP']
+    agggeofile_icecap = agg_geofile[agg_geofile['margin'] == 'ICE_CAP']
+    readout=readout+'Ice Cap total lake count\n'
+    for i in uniquebasin:
+        readout=readout+i + ' total lake count: ' + str(geofile_icecap['region'].value_counts()[i]) + '\n'
+    readout=readout+'Ice cap total lake count: ' + str(len(geofile_icecap))
+    readout=readout+'\n\n'
     
-    #Get unique values for basin area and satellite source 
-    uniquebasin = list(set(geofile_basin))
-    uniquesource = list(set(geofile_source))
-    
-    print('\nAggregating lake data...')
-    
-    #Get data from columns
-    agg_geofile['area'] = geofile['geometry'].area
-    agg_geofile['length'] = geofile['geometry'].length
-    agg_geofile.sort_values('drainageba')  
-    aggfile_basin = agg_geofile['drainageba'].tolist()    #Get lake location
-    aggfile_area = agg_geofile['area'].tolist()           #Get lake area
-    aggfile_areakm = []
-    for i in aggfile_area:
-        aggfile_areakm.append(i/10**6)
-    
-    label=['CW', 'CE', 'IC', 'NE', 'NO', 'NW', 'SE', 'SW']
-               
-    print('\nWriting general stats file...')
-            
-    #Open stats file    
-    f = open(outtxt1, 'w+')
-    
-    #Total number of lakes in dataset and total number of unique lakes
-    f.write('Total number of detected lakes , ' + str(len(geofile_id)) + '\n')
-    f.write('Total number of unique lakes , ' + str(max(geofile_id)) + '\n\n')
-    
-    #Total lake count for each sector
-    for i in range(len(label)):
-        f.write(label[i] + ' total lake count , ' + str(geofile_basin.count(label[i])) + '\n')
-    f.write('\n')
-    
-    #Unique lake count for each sector
-    for i in range(len(label)):
-        f.write(label[i] + ' unique lake count , ' + str(aggfile_basin.count(label[i])) + '\n')
-    f.write('\n')
-    
-    #Source count
+    # Unique lake count for each ice cap sector
+    readout=readout+'Ice Cap unique lake count\n' 
+    for i in uniquebasin:
+        readout=readout+i+ ' unique lake count: ' + str(agggeofile_icecap['region'].value_counts()[i]) + '\n'
+    readout=readout+'Ice cap total unique lake count: ' + str(len(agggeofile_icecap))
+    readout=readout+'\n\n'
+
+    # Source count
     for i in uniquesource:
-        f.write('Lakes detected using ' + i + ',' + str(geofile_source.count(i)) + '\n')
-    f.write('\n')
+        readout=readout+'Lakes detected using ' + i + ': ' + str(geofile['source'].value_counts()[i]) + '\n'
+    readout=readout+'\n'
     
-    #Min, max and average lake area
-    f.write('Min. lake area (km), ' + str(min(aggfile_areakm)) + '\n')
-    f.write('Max. lake area (km), ' + str(max(aggfile_areakm)) + '\n')
-    f.write('Average lake area (km), ' + str(np.average(aggfile_areakm)) + '\n')
-    f.write('\n')
+    # Min, max and average lake area
+    readout=readout+'Min. lake area (km): ' + str(agg_geofile['area_sqkm'].min()) + '\n'
+    readout=readout+'Max. lake area (km): ' + str(agg_geofile['area_sqkm'].max()) + '\n'
+    readout=readout+'Average lake area (km): ' + str(agg_geofile['area_sqkm'].max()) + '\n\n'
+ 
+    # Min, max and average uncertainty
+    readout=readout+'Min. uncertainty: ' + str(agg_geofile['certainty'].min()) + '\n'
+    readout=readout+'Max. uncertainty: ' + str(agg_geofile['certainty'].max()) + '\n'
+    readout=readout+'Average uncertainty: ' + str(agg_geofile['certainty'].mean()) + '\n\n'
+
+    print(readout)
+                  
+    # Open stats file   
+    if outfile is not None:
+        print('Writing general stats file...')
+        f = open(outfile, 'w+')
+        f.write(readout)    
+        f.close()
     
-    #Min, max and average uncertainty
-    f.write('Min. uncertainty , ' + str(min(geofile_uncertain)) + '\n')
-    f.write('Max. uncertainty , ' + str(max(geofile_uncertain)) + '\n')
-    f.write('Average uncertainty , ' + str(np.average(geofile_uncertain)) + '\n\n')
-    
-    f.close()
+    return readout
 
 if __name__ == "__main__": 
     
-    #Define input file and location 
-    workspace1 = '/home/pho/python_workspace/GrIML/other/'
-    file1 = workspace1 + 'iml_2017/metadata_vectors/griml_2017_inventory_final_first_intervention.shp'
-    outtxt1 = workspace1 + 'iml_2017/metadata_vectors/generalstats.csv'
+    # #Define input file and location 
+    # workspace1 = '/home/pho/python_workspace/GrIML/other/'
+    # file1 = workspace1 + 'iml_2017/metadata_vectors/griml_2017_inventory_final_first_intervention.shp'
+    # outtxt1 = workspace1 + 'iml_2017/metadata_vectors/generalstats.csv'
     
-    general_stats(file1, outtxt1)
+    # general_stats(file1, outtxt1)
+    
+    
+    workspace1 = '/home/pho/python_workspace/GrIML/other/iml_2016-2023/final/checked/*IML-fv1.shp'
+    out_dir = '/home/pho/python_workspace/GrIML/other/iml_2016-2023/final/checked/stats/'
+    for f in list(glob.glob(workspace1)):
+        name = str(Path(f).stem)
+        year = str(Path(f).stem)[0:4]
+        out_file = str(Path(out_dir).joinpath(name+'_general_stats.txt'))
+        
+        print('\n\n'+str(Path(f).stem))
+        readout = general_stats(f, out_file)
+        
