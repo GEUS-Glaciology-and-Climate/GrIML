@@ -1,4 +1,4 @@
-# Investigating Greenland's ice marginal lakes under a changing climate (GrIML)
+# GrIML - Investigating Greenland's ice marginal lakes under a changing climate
 
 [![PyPI version](https://badge.fury.io/py/griml.svg)](https://badge.fury.io/py/griml) [![DOI](https://zenodo.org/badge/444752900.svg)](https://zenodo.org/badge/latestdoi/444752900) [![Documentation Status](https://readthedocs.org/projects/griml/badge/?version=latest)](https://griml.readthedocs.io/en/latest/?badge=latest) [![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2FPennyHow%2FGrIML%2Fbadge%3Fref%3Dmain&style=flat)](https://actions-badge.atrox.dev/PennyHow/GrIML/goto?ref=main)
 
@@ -21,11 +21,11 @@ $ pip install .
 
 ## Workflow outline
 
-<img src="https://github.com/PennyHow/GrIML/blob/main/other/reporting/figures/griml_workflow_with_gee.png?raw=true" alt="The GrIML workflow." width="1500" align="aligncenter" />
+<img src="https://github.com/GEUS-Glaciology-and-Climate/GrIML/blob/main/other/reporting/figures/griml_workflow_with_gee.png?raw=true" alt="The GrIML workflow." width="1500" align="aligncenter" />
 
 **GrIML** proposes to examine ice marginal lake changes across Greenland using a multi-sensor and multi-method remote sensing approach to better address their influence on sea level contribution forecasting.
 
-Ice marginal lakes are detected using a remote sensing approach, based on offline workflows developed within the [ESA Glaciers CCI](https://catalogue.ceda.ac.uk/uuid/7ea7540135f441369716ef867d217519") (Option 6, An Inventory of Ice-Marginal Lakes in Greenland) ([How et al., 2021](https://www.nature.com/articles/s41598-021-83509-1)). Initial classifications are performed on Google Earth Engine with the scripts available [here](https://github.com/PennyHow/GrIML/tree/main/gee_scripts). Lake extents are defined through a multi-sensor approach using:
+Ice marginal lakes are detected using a remote sensing approach, based on offline workflows developed within the [ESA Glaciers CCI](https://catalogue.ceda.ac.uk/uuid/7ea7540135f441369716ef867d217519") (Option 6, An Inventory of Ice-Marginal Lakes in Greenland) ([How et al., 2021](https://www.nature.com/articles/s41598-021-83509-1)). Initial classifications are performed on Google Earth Engine with the scripts available [here](https://github.com/GEUS-Glaciology-and-Climate/GrIML/tree/main/gee_scripts). Lake extents are defined through a multi-sensor approach using:
 
 - Multi-spectral indices classification from Sentinel-2 optical imagery
 - Backscatter classification from Sentinel-1 SAR (synthetic aperture radar) imagery

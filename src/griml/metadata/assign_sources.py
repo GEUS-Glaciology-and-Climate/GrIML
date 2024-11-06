@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-def assign_sources(gdf, col_names=['unique_id', 'source']):
+def assign_sources(gdf, col_names=['lake_id', 'source']):
     '''Assign source metadata to geodataframe, based on unique lake id and
     individual source information
     
@@ -17,37 +17,33 @@ def assign_sources(gdf, col_names=['unique_id', 'source']):
     gdf : geopandas.GeoDataFrame
         Vectors with assigned sources
     '''
-    ids = gdf[col_names[0]].tolist()
-    source = gdf[col_names[1]].tolist()
-    satellites=[]
-    
-    # Construct source list
-    for x in range(len(ids)):
-        indx = _get_indices(ids, x)
-        if len(indx) != 0:
-            res = []
-            if len(indx) == 1:
-                res.append(source[indx[0]].split('/')[-1])
-            else:
-                unid=[]
-                for dx in indx:
-                    unid.append(source[dx].split('/')[-1])
-                res.append(list(set(unid)))
-            for z in range(len(indx)):
-                if len(indx) == 1:
-                    satellites.append(res)
-                else:
-                    satellites.append(res[0])
-                    
-    # Compile lists for appending
-    satellites_names = [', '.join(i) for i in satellites]
-    number = [len(i) for i in satellites]
-    
-    # Return updated geodataframe    
-    gdf['all_src']=satellites_names
-    gdf['num_src']=number
+    all_src=[]
+    num_src=[]
+    for idx, i in gdf.iterrows():
+        idl = i[col_names[0]]
+        g = gdf[gdf[col_names[0]] == idl]
+        source = list(set(list(gdf[col_names[1]])))
+        satellites=''
+        if len(source)==1:
+            satellites = satellites.join(source)
+            num = 1
+        elif len(source)==2:
+            satellites = satellites.join(source[0]+', '+source[1])
+            num = 2
+        elif len(source)==3:
+            satellites = satellites.join(source[0]+', '+source[1]+', '+source[2])
+            num = 3
+        else:
+            print('Unknown number of sources detected')
+            print(source)
+            satellites=None
+            num=None
+        all_src.append(satellites)
+        num_src.append(num)
+    satellites
+    gdf['all_src']=all_src
+    gdf['num_src']=num_src
     return gdf
-
 
 def _get_indices(mylist, value):
     '''Get indices for value in list'''

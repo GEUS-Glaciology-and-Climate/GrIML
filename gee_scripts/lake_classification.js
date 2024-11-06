@@ -3,8 +3,8 @@ print('Commencing script run');
 //--------------------------------------------------------------------------
 // DEFINE VARIABLES
 
-var date1='2017-07-01';
-var date2='2017-08-31';
+var date1='2016-07-01';
+var date2='2016-08-31';
 
 // Bounds filter as rectangle
 //var pos=[-49.5854, 70.7360, -55.5516, 59.9702];      
@@ -13,6 +13,7 @@ var date2='2017-08-31';
 
 // Bounds as feature
 var aoi = ee.FeatureCollection('users/pennyruthhow/greenland_coastline');
+var featcol = ee.FeatureCollection('users/pennyruthhow/greenland_rectangle_mask');
 
 print('Searching for images... ','Date range', date1, date2, 'Cloud percentage', 20)
 
@@ -35,12 +36,17 @@ function maskS2clouds(image) {
 }
 
 // Search for images
-var dataset = ee.ImageCollection('COPERNICUS/S2')
+var dataset = ee.ImageCollection('COPERNICUS/S2_HARMONIZED')
                   .filterDate(date1, date2)
                   .filterBounds(aoi)
                   // Pre-filter to get less cloudy granules.
                   .filter(ee.Filter.lt('CLOUDY_PIXEL_PERCENTAGE', 20))
                   .map(maskS2clouds);
+
+//var rgb = dataset.select(['B2', 'B3', 'B4']);
+//var mosaic = rgb.mosaic();
+//Map.setCenter(-71.12532, 42.3712, 12);
+//Map.addLayer(mosaic, {}, 'spatial mosaic');
 
 var blue='B2';
 var green='B3';
