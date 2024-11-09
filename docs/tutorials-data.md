@@ -84,8 +84,7 @@ iml = gpd.read_file("dataverse_files/20230101-ESA-GRIML-IML-fv1.shp")
 iml.plot(color="red")
 ```
 
-<img src="https://raw.githubusercontent.com/GEUS-Glaciology-and-Climate/GrIML/refs/heads/main/docs/figures/iml_basic_plot.png?raw=true" align="center", width="100">
-
+![Basic plot example](https://github.com/GEUS-Glaciology-and-Climate/GrIML/blob/main/docs/figures/iml_basic_plot.png)
 
 ```{important}
 Make sure that the file path is correct in order to load the dataset correctly
@@ -99,8 +98,8 @@ iml_d["centroid"] = iml_d.geometry.centroid
 iml_d["centroid"].plot(markersize=0.5)
 ```
 
-<img src="https://raw.githubusercontent.com/GEUS-Glaciology-and-Climate/GrIML/refs/heads/main/docs/figures/iml_pt_plot.png?raw=true" align="center", width="100">
- 
+![Point plot example](https://github.com/GEUS-Glaciology-and-Climate/GrIML/blob/main/docs/figures/iml_pt_plot.png)
+
 ## Generating statistics
 
 We can extract basic statistics from an ice marginal lake inventory in the dataset series using simple querying. Let's take the 2022 inventory in this example and first determine the number of classified lakes, and then the number of unique lakes:
@@ -236,4 +235,6 @@ ax.set_ylabel('Lake abundance', fontsize=14)
 # Show plot
 plt.show()
 ```
+https://github.com/GEUS-Glaciology-and-Climate/GrIML/blob/main/docs/figures/iml_time_series_plot.png?raw=true
 
+![Time-series plot example](https://github.com/GEUS-Glaciology-and-Climate/GrIML/blob/main/docs/figures/iml_time_series_plot.png)
