@@ -237,4 +237,4 @@ ax.set_ylabel('Lake abundance', fontsize=14)
 plt.show()
 ```
 
-<img src="https://github.com/GEUS-Glaciology-and-Climate/GrIML/blob/main/docs/figures/iml_time_series_plot.png?raw=true" alt="Time-seriesplot example" width="400" align="aligncenter" />
+<img src="https://github.com/GEUS-Glaciology-and-Climate/GrIML/blob/main/docs/figures/iml_time_series_plot.png?raw=true" alt="Time-seriesplot example" width="800" align="aligncenter" />
