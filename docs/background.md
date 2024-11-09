@@ -8,11 +8,11 @@ The **GrIML** processing package is for classifying water bodies from satellite 
 
 The **GrIML** post-processing chain follows a linear workflow. Initial rasterised binary classifications denoting water bodies can be inputted to **convert**, **filter** and **merge** into a cohesive ice marginal lake vector dataset, populated with useful **metadata** and analysed with relevant **statistical information**.
 
-[!GrIML summary workflow](https://github.com/GEUS-Glaciology-and-Climate/GrIML/blob/main/other/reporting/figures/griml_workflow_without_gee.png?raw=true)
+![GrIML summary workflow](https://github.com/GEUS-Glaciology-and-Climate/GrIML/blob/main/other/reporting/figures/griml_workflow_without_gee.png?raw=true)
 
 Each of these post-processing steps is contained within GrIML's modules, and called in turn to perform the entire processing chain. The `griml()` function invokes all post-processing steps.
 
-[!GrIML package structure](https://github.com/GEUS-Glaciology-and-Climate/GrIML/blob/main/other/reporting/figures/griml_package_structure.png?raw=true)
+![GrIML package structure](https://github.com/GEUS-Glaciology-and-Climate/GrIML/blob/main/other/reporting/figures/griml_package_structure.png?raw=true)
 
 
 ## Project motivation
