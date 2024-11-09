@@ -84,7 +84,7 @@ iml = gpd.read_file("dataverse_files/20230101-ESA-GRIML-IML-fv1.shp")
 iml.plot(color="red")
 ```
 
-![Basic plot example](https://github.com/GEUS-Glaciology-and-Climate/GrIML/blob/main/docs/figures/iml_basic_plot.png)
+<img src="https://github.com/GEUS-Glaciology-and-Climate/GrIML/blob/main/docs/figures/iml_basic_plot.png?raw=true" alt="Basic plot example" width="400" align="aligncenter" />
 
 ```{important}
 Make sure that the file path is correct in order to load the dataset correctly
@@ -98,7 +98,8 @@ iml_d["centroid"] = iml_d.geometry.centroid
 iml_d["centroid"].plot(markersize=0.5)
 ```
 
-![Point plot example](https://github.com/GEUS-Glaciology-and-Climate/GrIML/blob/main/docs/figures/iml_pt_plot.png)
+<img src="https://github.com/GEUS-Glaciology-and-Climate/GrIML/blob/main/docs/figures/iml_pt_plot.png?raw=true" alt="Point plot example" width="400" align="aligncenter" />
+
 
 ## Generating statistics
 
@@ -235,6 +236,5 @@ ax.set_ylabel('Lake abundance', fontsize=14)
 # Show plot
 plt.show()
 ```
-https://github.com/GEUS-Glaciology-and-Climate/GrIML/blob/main/docs/figures/iml_time_series_plot.png?raw=true
 
-![Time-series plot example](https://github.com/GEUS-Glaciology-and-Climate/GrIML/blob/main/docs/figures/iml_time_series_plot.png)
+<img src="https://github.com/GEUS-Glaciology-and-Climate/GrIML/blob/main/docs/figures/iml_time_series_plot.png?raw=true" alt="Time-seriesplot example" width="400" align="aligncenter" />
