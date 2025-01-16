@@ -18,7 +18,7 @@ The inventory series was created to better understand the impact of ice marginal
 
 ### Data format
 
-The detected lakes are presented as polygon vector features in shapefile format (.shp), with coordinates provided in the WGS NSIDC Sea Ice Polar Stereographic North (EPSG:3413) projected coordinate system.
+The detected lakes are presented as polygon vector features in GeoPackage format (.gpkg), with coordinates provided in the WGS NSIDC Sea Ice Polar Stereographic North (EPSG:3413) projected coordinate system.
 
 ### Metadata
 
@@ -55,32 +55,34 @@ The dataset is available on the [GEUS Dataverse](https://doi.org/10.22008/FK2/MB
 
 ```bash
 $ wget -r -e robots=off -nH --cut-dirs=3 --content-disposition "https://dataverse.geus.dk/api/datasets/:persistentId/dirindex?persistentId=doi:10.22008/FK2/MBKW9N"
-$ unzip dataverse_files.zip
 ```
 
 Or with Python:
 
 ```python
-import urllib
-import zipfile
+import wget
 
-# Define url and extraction directory
-url = "https://dataverse.geus.dk/api/datasets/:persistentId/dirindex?persistentId=doi:10.22008/FK2/MBKW9N"
-extract_dir = "dataverse_files"
+# Define urls
+urls = ["https://dataverse.geus.dk/api/access/datafile/85133",
+        "https://dataverse.geus.dk/api/access/datafile/85128",
+        "https://dataverse.geus.dk/api/access/datafile/85130",
+        "https://dataverse.geus.dk/api/access/datafile/85127",
+        "https://dataverse.geus.dk/api/access/datafile/85131",
+        "https://dataverse.geus.dk/api/access/datafile/85132",
+        "https://dataverse.geus.dk/api/access/datafile/85134",
+        "https://dataverse.geus.dk/api/access/datafile/85129",
+        ]
 
-# Fetch zipped files
-zip_path, _ = urllib.request.urlretrieve(url)
-
-# Unzip files to directory
-with zipfile.ZipFile(zip_path, "r") as f:
-    f.extractall(extract_dir)
+# Download files
+for u in urls:
+    filename = wget.download(u)
 ```
 
 One of the inventories in the dataset series can be opened and plotted in Python using geopandas. In this example, let's take the 2023 inventory:
 
 ```python
 import geopandas as gpd
-iml = gpd.read_file("dataverse_files/20230101-ESA-GRIML-IML-fv1.shp")
+iml = gpd.read_file("20230101-ESA-GRIML-IML-fv1.gpkg")
 iml.plot(color="red")
 ```
 
@@ -109,7 +111,7 @@ We can extract basic statistics from an ice marginal lake inventory in the datas
 import geopandas as gpd
 
 # Load inventory 
-iml = gpd.read_file("dataverse_files/20220101-ESA-GRIML-IML-fv1.shp")
+iml = gpd.read_file("20220101-ESA-GRIML-IML-fv1.gpkg")
 
 # Dissolve by lake id to get all unique lakes as dissolved polygons
 iml_d = iml.dissolve(by='lake_id')
@@ -159,7 +161,7 @@ import geopandas as gpd
 import matplotlib.pyplot as plt
 
 # Define directory
-in_dir = 'dataverse_files/*IML-fv1.shp'
+in_dir = '*IML-fv1.gpkg'
 
 # Iterate through inventories
 gdfs=[]
@@ -237,4 +239,4 @@ ax.set_ylabel('Lake abundance', fontsize=14)
 plt.show()
 ```
 
-<img src="https://github.com/GEUS-Glaciology-and-Climate/GrIML/blob/main/docs/figures/iml_time_series_plot.png?raw=true" alt="Time-seriesplot example" width="800" align="aligncenter" />
+<img src="https://github.com/GEUS-Glaciology-and-Climate/GrIML/blob/main/docs/figures/iml_time_series_plot.png?raw=true" alt="Time-series plot example" width="800" align="aligncenter" />
