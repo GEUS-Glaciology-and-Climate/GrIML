@@ -25,7 +25,7 @@ bibliography: paper.bib
 
 The `GrIML` Python package is for processing classified water bodies from satellite imagery, and compiling classifications into a standardised inventory. It has been used to produce the Greenland ice-marginal lake inventory series, which maps the presence and extents of water bodies across Greenland that share a margin with the Greenland Ice Sheet and/or the surrounding ice caps and periphery glaciers since 2016 [@How2025a] (\autoref{fig:inventory}). 
 
-![An overview of the Greenland ice-marginal lake inventory series, which maps the number of lakes and their size between the years of 2016 and 2023 [@how_data_2025] \label{fig:inventory}](https://github.com/PennyHow/GrIML/blob/main/other/reporting/figures/iml_dataset_overview.png?raw=true)
+![An overview of the Greenland ice-marginal lake inventory series, which maps the number of lakes and their size between the years of 2016 and 2023 [@how_data_2025]. The map shows the location of each lake, with the symbol signifying area change over time, where green circles represent an increase in lake area and yellow squares represent a decrease in lake area. The bar graphs show change in the number of lakes over each region   \label{fig:inventory}](https://github.com/PennyHow/GrIML/blob/main/other/reporting/figures/iml_dataset_overview.png?raw=true)
 
 Initial rasterised binary classifications denoting water bodies can be inputted to `GrIML` to convert, filter and merge into a cohesive ice-marginal lake vector dataset, populated with useful metadata and analysed with relevant statistical information (\autoref{fig:workflow}).
 
