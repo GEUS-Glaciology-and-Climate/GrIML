@@ -4,5 +4,3 @@ build/*
 misc/*
 
 src/griml.egg-info/*
-other/datasets/aoi/*
-other/datasets/iiml_2017/*
