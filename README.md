@@ -4,6 +4,7 @@
 
 The **GrIML** processing package for classifying water bodies from satellite imagery using a multi-sensor, multi-method remote sensing approach. This workflow is used for the production of the [Greenland ice-marginal lake inventory series](https://doi.org/10.22008/FK2/MBKW9N), as part of the [ESA GrIML project](https://eo4society.esa.int/projects/griml/). This repository also holds all project-related materials.
 
+
 ## Installation
 
 The GrIML Python package can be installed using pip: 
@@ -11,6 +12,7 @@ The GrIML Python package can be installed using pip:
 ```
 $ pip install griml
 ```
+
 Or cloned from the Github repository: 
 
 ```
@@ -18,6 +20,9 @@ $ git clone git@github.com:GEUS-Glaciology-and-Climate/GrIML.git
 $ cd GrIML
 $ pip install .
 ```
+
+Full documentation and tutorials are available at GrIML's [readthedocs](https://griml.readthedocs.io)
+
 
 ## Workflow outline
 
@@ -33,13 +38,26 @@ Ice-marginal lakes are detected using a remote sensing approach, based on offlin
 
 Post-processing of these classifications is performed using the **GrIML** Python package, including raster-to-vector conversion, filtering, merging, metadata population, and statistical analysis.
 
+
+## Terms of use
+
+If the workflow or data are presented or used to support results of any kind, please include an acknowledgement and references to the applicable publications:
+
+*How, P. et al. (2025) "Greenland Ice-Marginal Lake Inventory annual time-series Edition 1". GEUS Dataverse. [https://doi.org/10.22008/FK2/MBKW9N](https://doi.org/10.22008/FK2/MBKW9N)*
+
+*How, P. (2024) PennyHow/GrIML v0.1.0, Zenodo, [https://doi.org/10.5281/zenodo.11395471](https://doi.org/10.5281/zenodo.11395471)*
+
+*How, P. et al. (2021) "Greenland-wide inventory of ice marginal lakes using a multi-method approach". Sci. Rep. 11, 4481. [https://doi.org/10.1038/s41598-021-83509-1](https://doi.org/10.1038/s41598-021-83509-1)*
+
+
 ## Project links
+
 - [The Greenland ice-marginal lake inventory series](https://doi.org/10.22008/FK2/MBKW9N), available through the [GEUS Dataverse](https://dataverse.geus.dk/)
 
 - ESA [project outline](https://eo4society.esa.int/projects/griml/) and [fellow information](https://eo4society.esa.int/lpf/penelope-how/)
 
-- Information about the [ESA Living Planet Fellowship](https://eo4society.esa.int/communities/scientists/living-planet-fellowship/)
-
 - [GrIML project description](https://pennyhow.github.io/blog/investigating-griml/)
+
+- Information about the [ESA Living Planet Fellowship](https://eo4society.esa.int/communities/scientists/living-planet-fellowship/)
 
 - 2017 ice marginal lake inventory [Scientific Reports paper](https://www.nature.com/articles/s41598-021-83509-1) and [dataset](https://catalogue.ceda.ac.uk/uuid/7ea7540135f441369716ef867d217519)
