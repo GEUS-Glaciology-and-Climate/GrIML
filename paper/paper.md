@@ -25,10 +25,10 @@ bibliography: paper.bib
 
 The `GrIML` Python package is for processing classified water bodies from satellite imagery, and compiling classifications into a standardised inventory. It has been used to produce the Greenland ice-marginal lake inventory series, which maps the presence and extents of water bodies across Greenland that share a margin with the Greenland Ice Sheet and/or the surrounding ice caps and periphery glaciers since 2016 [@How2025a]. 
 
+![An overview of the GrIML Python package workflow for generating ice-marginal lake inventories. The boxes refer to the four main modules and processing stages (reading from left to right), the coloured circles represent intermediary outputs to each processing stage, and the grey circles represent additional inputs. \label{fig:workflow}](https://github.com/GEUS-Glaciology-and-Climate/GrIML/blob/main/docs/figures/griml_workflow_without_gee.png?raw=true){ width=95% height=95% }
+
+
 Initial rasterised binary classifications denoting water bodies can be inputted to `GrIML` to convert, filter and merge into a unified ice-marginal lake vector dataset, populated with useful metadata and analysed with relevant statistical information (\autoref{fig:workflow}).
-
-![An overview of the GrIML Python package workflow for generating ice-marginal lake inventories. The boxes refer to the four main modules and processing stages (reading from left to right), the coloured circles represent intermediary outputs to each processing stage, and the grey circles represent additional inputs. \label{fig:workflow}](https://github.com/GEUS-Glaciology-and-Climate/GrIML/blob/main/other/reporting/figures/griml_workflow_without_gee.png?raw=true){ width=95% height=95% }
-
 
 # Statement of need
 
@@ -62,7 +62,7 @@ The 2016-2023 Greenland ice-marginal lake inventory series was produced as part 
 
 These 4 modules represent the 4 processing steps that should be executed in order to produce a standardised ice-marginal lake inventory. Each module contains the functions associated with each step (\autoref{fig:structure}).
 
-![The GrIML Python package structure \label{fig:structure}](https://github.com/GEUS-Glaciology-and-Climate/GrIML/blob/main/other/reporting/figures/griml_package_structure.png?raw=true){ width=75% height=75% }
+![The GrIML Python package structure, including modules (blue), key module functions (orange), classes (green) and dependencies (yellow) \label{fig:structure}](https://github.com/GEUS-Glaciology-and-Climate/GrIML/blob/main/docs/figures/griml_package_structure.png?raw=true){ width=75% height=75% }
 
 
 # Usage
