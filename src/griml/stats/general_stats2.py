@@ -84,9 +84,9 @@ print(big['area_sqkm'])
 # # Save to file
 # print('Saving merged geometries to file...')
 # gdf_dissolve = gdf_dissolve.sort_values(by='lake_id')
-# gdf_dissolve.to_file('/home/pho/Desktop/griml_dataset/cleaned_and_correct/ALL-ESA-GRIML-IML-MERGED-fv1.shp')
+# gdf_dissolve.to_file('ALL-ESA-GRIML-IML-MERGED-fv1.shp')
 
 # # Add centroid position
 # print('Saving centroid geometries to file...')
 # gdf_dissolve['geometry'] = gdf_dissolve['geometry'].centroid    
-# gdf_dissolve.to_file('/home/pho/Desktop/griml_dataset/cleaned_and_correct/ALL-ESA-GRIML-IML-MERGED-fv1_centroids.shp')
+# gdf_dissolve.to_file('ALL-ESA-GRIML-IML-MERGED-fv1_centroids.shp')

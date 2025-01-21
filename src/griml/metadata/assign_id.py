@@ -3,7 +3,7 @@
 
 from scipy.sparse.csgraph import connected_components
 
-def assign_id(gdf, col_name='unique_id'):
+def assign_id(gdf, col_name='lake_id'):
     '''Assign unique identification numbers to non-overlapping geometries in
     geodataframe
     

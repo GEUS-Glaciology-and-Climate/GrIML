@@ -2,7 +2,7 @@
 
 import geopandas as gpd
  
-def aggregate(geofile, col_name='LakeID'):
+def aggregate(geofile, col_name='lake_id'):
     '''Generate areal statistics for aggregated geodataframe. Aggregation is 
     determined from a given column name
     
@@ -11,7 +11,7 @@ def aggregate(geofile, col_name='LakeID'):
     geofile : gpd.GeoDataFrame
         Dataframe to perform aggregation statistics on
     col_name: str, optional
-        Column name to aggregate dataframe by. The default is "LakeID"
+        Column name to aggregate dataframe by. The default is "lake_id"
     
     Returns
     -------
@@ -50,9 +50,8 @@ def centroids(geofile):
     return geofile
 
 if __name__ == "__main__": 
-    workspace1 = '/home/pho/Desktop/useful_datasets/IIML_2017/'
-    file1 = workspace1 + '20170101-ESACCI-L3S_GLACIERS-IML-MERGED-fv1.shp'
-    file3 = workspace1 + '10170101-ESACCI-L3S_GLACIERS-IML-MERGED-fv1_centroid.shp' 
+    file1 = 'ALL-ESA-GRIML-IML-fv1.gpkg'
+    file3 = 'ALL-ESA-GRIML-IML-fv1_centroid.gpkg' 
     
     gdf = gpd.read_file(file1)
     agg = aggregate(gdf)

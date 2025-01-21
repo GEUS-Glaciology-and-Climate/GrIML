@@ -5,6 +5,7 @@ import geopandas as gpd
 import pandas as pd
 import os, errno
 from pathlib import Path
+import griml
 
 def load(i): 
     '''Load vectors into appropriate format for processing

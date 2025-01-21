@@ -1,10 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-Created on Thu Dec  5 13:11:30 2024
-
-@author: pho
-"""
 
 import geopandas as gpd
 import pandas as pd

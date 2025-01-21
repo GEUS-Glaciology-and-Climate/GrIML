@@ -75,6 +75,6 @@ print(df_merged)
 gdf = gp.read_file(file2)
 gdf_all = pd.merge(gdf,df_merged,on=['lake_id'], how='outer')
 
-# gdf_all.to_file('/home/pho/Desktop/griml_dataset/cleaned_and_correct/ALL-ESA-GRIML-IML-MERGED-fv1_areal_change.shp')
+# gdf_all.to_file('ALL-ESA-GRIML-IML-MERGED-fv1_areal_change.shp')
 
 

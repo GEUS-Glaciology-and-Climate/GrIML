@@ -23,7 +23,7 @@ def method_stats(infile1, infile2, outfile):
     #Read file as geopandas index
     geofile = gp.read_file(infile1)
     basinfile = gp.read_file(infile2)
-    agg_geofile = geofile.dissolve(by='unique_id')
+    agg_geofile = geofile.dissolve(by='lake_id')
    
     
     print('\nRetrieving basin area data...')
@@ -39,8 +39,8 @@ def method_stats(infile1, infile2, outfile):
     #Get data from columns
     agg_geofile['area'] = agg_geofile['geometry'].area
     agg_geofile['length'] = agg_geofile['geometry'].length
-    agg_geofile.sort_values('drainageba')  
-    aggfile_basin = agg_geofile['drainageba'].tolist()    #Get lake location
+    agg_geofile.sort_values('region')  
+    aggfile_basin = agg_geofile['region'].tolist()    #Get lake location
     aggfile_area = agg_geofile['area'].tolist()           #Get lake area
     aggfile_sat = agg_geofile['all_src'].tolist()      #Get lake source
     
@@ -51,14 +51,13 @@ def method_stats(infile1, infile2, outfile):
     #Get all lake data for basins
     aggfile_CW=[]
     aggfile_CE=[]
-    aggfile_ICECAP=[]
     aggfile_NE=[]
     aggfile_NO=[]
     aggfile_NW=[]
     aggfile_SE=[]
     aggfile_SW=[]
-    label=['CW', 'CE', 'IC', 'NE', 'NO', 'NW', 'SE', 'SW']
-    aggfile_arealist=[aggfile_CW,aggfile_CE, aggfile_ICECAP,aggfile_NE,aggfile_NO,aggfile_NW,
+    label=['CW', 'CE', 'NE', 'NO', 'NW', 'SE', 'SW']
+    aggfile_arealist=[aggfile_CW,aggfile_CE,aggfile_NE,aggfile_NO,aggfile_NW,
                        aggfile_SE,aggfile_SW]
     for i in range(len(aggfile_basin)):
         for l in range(len(label)):
@@ -68,25 +67,23 @@ def method_stats(infile1, infile2, outfile):
     
     #Get all lake data for basins, rounded
     aggfiler_CW = [round(n, 2) for n in aggfile_CW]
-    aggfiler_ICECAP = [round(n, 2) for n in aggfile_ICECAP]
     aggfiler_NE = [round(n, 2) for n in aggfile_NE]
     aggfiler_NO = [round(n, 2) for n in aggfile_NO]
     aggfiler_NW = [round(n, 2) for n in aggfile_NW]
     aggfiler_SE = [round(n, 2) for n in aggfile_SE]
     aggfiler_SW = [round(n, 2) for n in aggfile_SW]
-    aggfile_arealist_round=[aggfiler_CW,aggfiler_ICECAP,aggfiler_NE,aggfiler_NO,aggfiler_NW,
+    aggfile_arealist_round=[aggfiler_CW,aggfiler_NE,aggfiler_NO,aggfiler_NW,
                             aggfiler_SE,aggfiler_SW]            
                 
     #Get all lake data for basins
     aggsat_CW=[]
     aggsat_CE=[]
-    aggsat_ICECAP=[]
     aggsat_NE=[]
     aggsat_NO=[]
     aggsat_NW=[]
     aggsat_SE=[]
     aggsat_SW=[]
-    aggfile_satlist=[aggsat_CW,aggsat_CE,aggsat_ICECAP,aggsat_NE,aggsat_NO,aggsat_NW,
+    aggfile_satlist=[aggsat_CW,aggsat_CE,aggsat_NE,aggsat_NO,aggsat_NW,
                        aggsat_SE,aggsat_SW]
     for i in range(len(aggfile_sat)):
         for l in range(len(label)):
@@ -126,9 +123,9 @@ def method_stats(infile1, infile2, outfile):
 
 if __name__ == "__main__": 
 
-    workspace1 = '/home/pho/python_workspace/GrIML/other/'
-    file1 = workspace1 + 'iml_2017/metadata_vectors/griml_2017_inventory_final_first_intervention.shp'
-    file2 = workspace1 + 'datasets/drainage_basins/Greenland_Basins_PS_merged_aru_v1.4.2.shp'
-    outtxt = workspace1 + 'iml_2017/metadata_vectors/method_stats.csv'
+    file1 = '20220101-ESA-GRIML-IML-fv1.gpkg'
+    file2 = '../../../other/datasets/drainage_basins/greenland_basins_polarstereo.shp'
+    
+    outtxt = 'method_stats.csv'
 
     method_stats(file1, file2, outtxt)

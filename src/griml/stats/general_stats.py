@@ -92,17 +92,9 @@ def general_stats(file1, outfile=None):
     return readout
 
 if __name__ == "__main__": 
-    
-    # #Define input file and location 
-    # workspace1 = '/home/pho/python_workspace/GrIML/other/'
-    # file1 = workspace1 + 'iml_2017/metadata_vectors/griml_2017_inventory_final_first_intervention.shp'
-    # outtxt1 = workspace1 + 'iml_2017/metadata_vectors/generalstats.csv'
-    
-    # general_stats(file1, outtxt1)
-    
-    
-    workspace1 = '/home/pho/python_workspace/GrIML/other/iml_2016-2023/final/checked/*IML-fv1.shp'
-    out_dir = '/home/pho/python_workspace/GrIML/other/iml_2016-2023/final/checked/stats/'
+ 
+    workspace1 = '*IML-fv1.shp'
+    out_dir = 'stats/'
     for f in list(glob.glob(workspace1)):
         name = str(Path(f).stem)
         year = str(Path(f).stem)[0:4]
