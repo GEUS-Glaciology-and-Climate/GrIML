@@ -11,18 +11,13 @@ authors:
     email: pho@geus.dk
     affiliation: GEUS
     orcid: 'https://orcid.org/0000-0002-8088-8497'
-  - given-names: Mads Christian
-    family-names: Lund
-    email: maclu@geus.dk
-    affiliation: GEUS
-    orcid: 'https://orcid.org/0009-0009-0446-8253'
 identifiers:
-  - type: doi
-    value: 10.XXXXX/joss.XXXXXX
-    description: JOSS software paper
   - type: doi
     value: 10.5281/zenodo.11395471
     description: Zenodo DOI for releases
+  - type: doi
+    value: https://doi.org/10.22008/FK2/MBKW9N
+    description: Corresponding dataset
 repository-code: 'https://github.com/GEUS-Glaciology-and-Climate/GrIML'
 url: 'https://griml.readthedocs.io/'
 keywords:
@@ -35,4 +30,4 @@ keywords:
   - glacial-lakes
   - python
   - google-earth-engine
-license: GPL-2.0
+license: MIT

@@ -14,39 +14,42 @@ from scipy.sparse.csgraph import connected_components
 from scipy.spatial import cKDTree
 
 # Map inventory file locations
-gdf_files = '/home/pho/Desktop/python_workspace/GrIML/other/iml_2016-2023/final/unchecked/*.shp'
+gdf_files = '/home/pho/Desktop/griml_dataset/cleaned_and_correct/*IML-fv1.shp'
 
 # Load inventory point file with lake_id, region, basin-type and placename info
-gdf2 = gpd.read_file('/home/pho/Desktop/python_workspace/GrIML/other/iml_2016-2023/manual_validation/iml_manual_validation_with_names.shp')
-gdf2_corr = gdf2.drop(gdf2[gdf2.geometry==None].index)
+gdf2 = gpd.read_file('/home/pho/python_workspace/GrIML/other/iml_2016-2023/manual_validation/CURATED-ESA-GRIML-IML-fv1.shp')
+# gdf2 = gdf2.drop(gdf2[gdf2.geometry==None].index)
 
 
 # Iterate across inventory series files
 for g in list(glob.glob(gdf_files)):
     gdf1 = gpd.read_file(g)
-    gdf1 = gdf1.drop(gdf1[gdf1.geometry==None].index)
+    # gdf1 = gdf1.drop(gdf1[gdf1.geometry==None].index)
 
     year = str(Path(g).stem)[0:4]
+    print('\n')
     print(year)
+    print(len(gdf1))
     
     # Join by attribute
-    gdf1['new_lakeid']=list(gdf1['lake_id'])
-    gdf = gdf1.merge(gdf2_corr, on='new_lakeid')
+    # gdf1['new_lakeid']=list(gdf1['lake_id'])
+    gdf = gdf1.merge(gdf2, on='lake_id')
+    print(len(gdf))
 
 
     # Rename columns
-    gdf['lake_id']=gdf['new_lakeid']
-    gdf['margin']=gdf['BasinType']
-    gdf['region']=gdf['Region']
-    gdf['lake_name']=gdf['placename']
+    # gdf['lake_id']=gdf['lake_id_y']
+    gdf['margin']=gdf['margin_y']
+    gdf['region']=gdf['region_y']
+    gdf['lake_name']=gdf['lake_name_y']
     # gdf['start_date']=gdf['startdate']
     # gdf['end_date']=gdf['enddate']
     
     # Reformat geometry
     gdf['geometry'] = gdf['geometry_x']
     gdf = gdf.drop(gdf[gdf.geometry==None].index)
-    gdf['area_sqkm']=[g.area/10**6 for g in list(gdf['geometry'])]
-    gdf['length_km']=[g.length/1000 for g in list(gdf['geometry'])]
+    gdf['area_sqkm']=[s.area/10**6 for s in list(gdf['geometry'])]
+    gdf['length_km']=[s.length/1000 for s in list(gdf['geometry'])]
     gdf = gpd.GeoDataFrame(gdf, geometry='geometry')
         
 
@@ -54,8 +57,8 @@ for g in list(glob.glob(gdf_files)):
     num_src=[]
     for idx, i in gdf.iterrows():
         idl = i['lake_id']
-        g = gdf[gdf['lake_id'] == idl]
-        source = list(set(list(g['source'])))
+        gi = gdf[gdf['lake_id'] == idl]
+        source = list(set(list(gi['source'])))
         satellites=''
         if len(source)==1:
             satellites = satellites.join(source)
@@ -117,11 +120,29 @@ for g in list(glob.glob(gdf_files)):
     # gdf['temp_num']=''
 
     # Reorder columns and index
-    gdf_final = gdf[['geometry', 'lake_id','margin','region','lake_name',
-               'start_date','end_date','area_sqkm','length_km','method',
-               'source','all_src','num_src','certainty', 'verified',
-               'verif_by','edited', 'edited_by']]
-  
+    gdf_final = gdf[['geometry', 
+                   'lake_id', 
+                   'lake_name', 
+                   'margin', 
+                   'region', 
+                   'area_sqkm', 
+                   'length_km',
+                   'temp_aver',
+                   'temp_min',
+                   'temp_max',
+                   'temp_stdev',
+                   'method',
+                   'source',
+                   'all_src', 
+                   'num_src',
+                   'certainty',
+                   'start_date',
+                   'end_date',   
+                   'verified', 
+                   'verif_by', 
+                   'edited', 
+                   'edited_by']]
+    
     # Re-format index
     gdf_final = gdf_final.sort_values(by='lake_id')
     gdf_final["row_id"] = gdf.index + 1
@@ -129,7 +150,8 @@ for g in list(glob.glob(gdf_files)):
     gdf_final.set_index("row_id", inplace=True)
      
 
-    gdf_final.to_file('/home/pho/Desktop/python_workspace/GrIML/other/iml_2016-2023/final/checked/'+str(year)+'0101-ESA-GRIML-IML-fv1.shp')
+    print(len(gdf_final))
+    gdf_final.to_file('/home/pho/Desktop/griml_dataset/cleaned_and_correct/'+str(year)+'0101-ESA-GRIML-IML-fv1.shp')
 
     gdf_final['idx'] = gdf_final['lake_id']    
     gdf_dissolve = gdf_final.dissolve(by='idx')
@@ -144,5 +166,5 @@ for g in list(glob.glob(gdf_files)):
                'start_date','end_date',  'area_sqkm','length_km','all_src',
                'num_src','certainty', 'verified','verif_by','edited', 'edited_by']]
     
-    # gdf_dissolve = gdf_dissolve.reset_index(drop=True)
-    gdf_dissolve.to_file('/home/pho/Desktop/python_workspace/GrIML/other/iml_2016-2023/final/checked/'+str(year)+'0101-ESA-GRIML-IML-MERGED-fv1.shp')
+    gdf_dissolve = gdf_dissolve.reset_index(drop=True)
+    gdf_dissolve.to_file('/home/pho/Desktop/griml_dataset/cleaned_and_correct/'+str(year)+'0101-ESA-GRIML-IML-MERGED-fv1.shp')
