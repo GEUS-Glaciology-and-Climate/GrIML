@@ -115,4 +115,4 @@ for i in range(len(regions)):
     plt.subplots_adjust(top=0.9, bottom=0.1, left=0.1, right=0.9)
     
     # plt.show()
-    plt.savefig(out_dir+f'{regions[i]}_method2_overview.png', dpi=300, transparent=True)
+    plt.savefig(out_dir+f'{regions[i]}_sources.png', dpi=300, transparent=True)

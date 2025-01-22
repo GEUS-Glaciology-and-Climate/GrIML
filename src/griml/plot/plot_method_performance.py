@@ -248,4 +248,4 @@ for a in [ax2,ax3,ax3twin]:
 
 plt.subplots_adjust(wspace=0, hspace=0)    
 # plt.show()
-plt.savefig(out_dir+'method_performance_all_lakes.png', dpi=300)
+plt.savefig(out_dir+'method_performance.png', dpi=300)

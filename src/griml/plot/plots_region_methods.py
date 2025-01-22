@@ -1,10 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-Created on Wed Nov 20 11:43:52 2024
 
-@author: pho
-"""
 import numpy as np
 import geopandas as gp
 import glob
@@ -117,4 +113,4 @@ for r in range(len(regions)):
                bbox=props, transform=ax.transAxes)
     
     # plt.show()
-    plt.savefig(out_dir+f'{regions[r]}_method_overview.png', dpi=300, transparent=True)
+    plt.savefig(out_dir+f'{regions[r]}_methods.png', dpi=300, transparent=True)
