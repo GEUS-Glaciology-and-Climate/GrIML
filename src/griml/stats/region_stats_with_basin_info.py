@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 import os
@@ -6,8 +7,9 @@ import geopandas as gp
 from scipy import stats
 
 
-def basin_stats(infile1, infile2, infile3, outtxt):           
-    '''Calculate basin statistics on a lake inventory file
+def region_stats_with_basin_info(infile1, infile2, infile3, outtxt):           
+    '''Calculate region statistics on a lake inventory file, including basin 
+    information such as basin margin length
     
     Parameters
     ----------
@@ -157,4 +159,4 @@ if __name__ == "__main__":
     
     outtxt = 'basin_stats.csv'
     
-    basin_stats(file1, file2, file3, outtxt)
+    region_stats_with_basin_info(file1, file2, file3, outtxt)

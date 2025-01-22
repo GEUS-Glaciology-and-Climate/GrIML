@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 import numpy as np
@@ -6,7 +7,7 @@ import glob
 from pathlib import Path
 
 
-def general_stats(file1, outfile=None): 
+def inventory_general_stats(file1, outfile=None): 
     '''Calculate general statistics on a lake inventory file
     
     Parameters
@@ -101,5 +102,5 @@ if __name__ == "__main__":
         out_file = str(Path(out_dir).joinpath(name+'_general_stats.txt'))
         
         print('\n\n'+str(Path(f).stem))
-        readout = general_stats(f, out_file)
+        readout = inventory_general_stats(f, out_file)
         
