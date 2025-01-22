@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 import os
@@ -6,8 +7,9 @@ import geopandas as gp
 from scipy import stats
 
 
-def basin_stats(infile1, infile2, infile3, outtxt):           
-    '''Calculate basin statistics on a lake inventory file
+def region_stats_with_basin_info(infile1, infile2, infile3, outtxt):           
+    '''Calculate region statistics on a lake inventory file, including basin 
+    information such as basin margin length
     
     Parameters
     ----------
@@ -27,14 +29,14 @@ def basin_stats(infile1, infile2, infile3, outtxt):
     geofile = gp.read_file(infile1)
     basinfile = gp.read_file(infile2)
     extfile = gp.read_file(infile3)
-    agg_geofile = geofile.dissolve(by='unique_id')
+    agg_geofile = geofile.dissolve(by='lake_id')
 
 
     print('\nRetrieving lake data...')
 
     #Get data from columns
-    geofile = geofile.sort_values('drainageba')
-    geofile_basin = geofile['drainageba'].tolist()          #Get lake location
+    geofile = geofile.sort_values('region')
+    geofile_basin = geofile['region'].tolist()          #Get lake location
 
     geofile['area'] = geofile['geometry'].area/10**6
     geofile_area = geofile['area'].tolist() 
@@ -43,13 +45,12 @@ def basin_stats(infile1, infile2, infile3, outtxt):
     geofile_SW=[]
     geofile_NE=[]
     geofile_SE=[]
-    geofile_ICECAP=[]
     geofile_CW=[]
     geofile_CE=[]
     geofile_NO=[]
     geofile_NW=[]
-    label=['CW', 'CE', 'IC', 'NE', 'NO', 'NW', 'SE', 'SW']
-    geofile_arealist=[geofile_CW,geofile_CE,geofile_ICECAP,geofile_NE,geofile_NO,geofile_NW,
+    label=['CW', 'CE', 'NE', 'NO', 'NW', 'SE', 'SW']
+    geofile_arealist=[geofile_CW,geofile_CE,geofile_NE,geofile_NO,geofile_NW,
                        geofile_SE,geofile_SW]
 
     for i in range(len(geofile_basin)):
@@ -67,9 +68,7 @@ def basin_stats(infile1, infile2, infile3, outtxt):
 
     basinfile["row_id"] = basinfile.index + 1
     basinfile.reset_index(drop=True, inplace=True)
-    basinfile.set_index("row_id", inplace = True)
-    basinfile.to_file(workspace1+'datasets/drainage_basins/Greenland_Basins_PS_merged_aru_v1.4.2_withareaperimeter.shp')
-                        
+    basinfile.set_index("row_id", inplace = True)                       
     basinfile_area = basinfile['area'].tolist()  
     basinfile_name = basinfile['Subregion'].tolist()
 
@@ -92,8 +91,8 @@ def basin_stats(infile1, infile2, infile3, outtxt):
     #Get data from columns
     agg_geofile['area'] = geofile['geometry'].area
     agg_geofile['length'] = geofile['geometry'].length
-    agg_geofile.sort_values('drainageba')  
-    aggfile_basin = agg_geofile['drainageba'].tolist()    #Get lake location
+    agg_geofile.sort_values('region')  
+    aggfile_basin = agg_geofile['region'].tolist()    #Get lake location
     aggfile_area = agg_geofile['area'].tolist()           #Get lake area
 
     aggfile_areakm = []
@@ -103,14 +102,13 @@ def basin_stats(infile1, infile2, infile3, outtxt):
     #Get all lake data for basins
     aggfile_CW=[]
     aggfile_CE=[]
-    aggfile_ICECAP=[]
     aggfile_NE=[]
     aggfile_NO=[]
     aggfile_NW=[]
     aggfile_SE=[]
     aggfile_SW=[]
-    label=['CW', 'CE', 'IC', 'NE', 'NO', 'NW', 'SE', 'SW']
-    aggfile_arealist=[aggfile_CW,aggfile_CE, aggfile_ICECAP,aggfile_NE,aggfile_NO,aggfile_NW,
+    label=['CW', 'CE', 'NE', 'NO', 'NW', 'SE', 'SW']
+    aggfile_arealist=[aggfile_CW,aggfile_CE,aggfile_NE,aggfile_NO,aggfile_NW,
                        aggfile_SE,aggfile_SW]
     for i in range(len(aggfile_basin)):
         for l in range(len(label)):
@@ -120,13 +118,12 @@ def basin_stats(infile1, infile2, infile3, outtxt):
 
     #Get all lake data for basins, rounded
     aggfiler_CW = [round(n, 2) for n in aggfile_CW]
-    aggfiler_ICECAP = [round(n, 2) for n in aggfile_ICECAP]
     aggfiler_NE = [round(n, 2) for n in aggfile_NE]
     aggfiler_NO = [round(n, 2) for n in aggfile_NO]
     aggfiler_NW = [round(n, 2) for n in aggfile_NW]
     aggfiler_SE = [round(n, 2) for n in aggfile_SE]
     aggfiler_SW = [round(n, 2) for n in aggfile_SW]
-    aggfile_arealist_round=[aggfiler_CW,aggfiler_ICECAP,aggfiler_NE,aggfiler_NO,aggfiler_NW,
+    aggfile_arealist_round=[aggfiler_CW,aggfiler_NE,aggfiler_NO,aggfiler_NW,
                             aggfiler_SE,aggfiler_SW]              
 
     print('Writing detailed stats file...')
@@ -156,11 +153,10 @@ def basin_stats(infile1, infile2, infile3, outtxt):
     f.close()  
 
 if __name__ == "__main__":  
-    workspace1 = '/home/pho/python_workspace/GrIML/other/'
-    file1 = workspace1 + 'iml_2017/metadata_vectors/griml_2017_inventory_final_first_intervention.shp'
-    file2 = workspace1 + 'datasets/drainage_basins/Greenland_Basins_PS_merged_aru_v1.4.2.shp'
-    file3 = workspace1 + 'datasets/drainage_basins/Greenland_Basins_PS_merged_aru_v1.4.2_lines.shp'
+    file1 = '20230101-ESA-GRIML-IML-fv1.gpkg'
+    file2 = '../../../other/datasets/drainage_basins/greenland_basins_polarstereo.shp'
+    file3 = '../../../other/datasets/drainage_basins/greenland_basins_polarstereo_lines.shp'
     
-    outtxt = workspace1 + 'iml_2017/metadata_vectors/basin_stats.csv'
+    outtxt = 'basin_stats.csv'
     
-    basin_stats(file1, file2, file3, outtxt)
+    region_stats_with_basin_info(file1, file2, file3, outtxt)
