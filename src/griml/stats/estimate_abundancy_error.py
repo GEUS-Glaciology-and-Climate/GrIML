@@ -25,7 +25,7 @@ def estimate_abundancy_error(gdf1, gdf2):
         
         # Iterate across inventory series files
         gdfs=[]
-        for g in list(sorted(glob.glob(gdf1))):
+        for g in gdf1:
             print('Loading ' + g)
             gdf = gpd.read_file(g)
             gdf = gdf.dissolve(by='lake_id')
