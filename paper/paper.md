@@ -69,16 +69,6 @@ The `GrIML` Python package is compatible with Python 3.10, 3.11, and 3.12, and c
 $ pip install griml
 ```
 
-To install as a developer, a conda environment file is provided that includes all of GrIML's dependencies for a straightforward install:
-
-```
-$ git clone git@github.com:GEUS-Glaciology-and-Climate/GrIML.git
-$ cd GrIML
-$ conda env create --file environment.yml
-$ conda activate griml
-$ pip install .
-```
-
 Full installation instructions are provided at [https://griml.readthedocs.io/en/latest/installation.html](https://griml.readthedocs.io/en/latest/installation.html).
 
 
