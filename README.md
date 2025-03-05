@@ -45,7 +45,9 @@ If the workflow or data are presented or used to support results of any kind, pl
 
 *How, P. et al. (2025) "Greenland Ice-Marginal Lake Inventory annual time-series Edition 1". GEUS Dataverse. [https://doi.org/10.22008/FK2/MBKW9N](https://doi.org/10.22008/FK2/MBKW9N)*
 
-*How, P. (2024) PennyHow/GrIML v0.1.0, Zenodo, [https://doi.org/10.5281/zenodo.11395471](https://doi.org/10.5281/zenodo.11395471)*
+*How, P. et al. (In Review) "The Greenland Ice-Marginal Lake Inventory Series from 2016 to 2023". Earth Syst. Sci. Data Discuss. [https://doi.org/10.5194/essd-2025-18](https://doi.org/10.5194/essd-2025-18)
+
+*How, P. (2025) PennyHow/GrIML v1.0.0, Zenodo, [https://doi.org/10.5281/zenodo.14718898](https://doi.org/10.5281/zenodo.14718898)*
 
 *How, P. et al. (2021) "Greenland-wide inventory of ice marginal lakes using a multi-method approach". Sci. Rep. 11, 4481. [https://doi.org/10.1038/s41598-021-83509-1](https://doi.org/10.1038/s41598-021-83509-1)*
 
