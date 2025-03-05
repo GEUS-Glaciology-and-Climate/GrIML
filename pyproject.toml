@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "griml"
-version = "1.1.0"
+version = "1.0.1"
 description = "A workflow for classifying ice-marginal lakes from satellite imagery and compiling lake inventories"
 readme = "README.md"
 authors = [{name = "Penelope How", email = "pho@geus.dk"}]
