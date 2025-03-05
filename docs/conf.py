@@ -7,9 +7,9 @@ import sys
 sys.path.insert(0, os.path.abspath('../src/griml/'))
 
 project = 'GrIML'
-copyright = '2024, Penelope How'
+copyright = '2025, Penelope How'
 author = 'Penelope How'
-release = '0.1.1'
+release = '1.0.1'
 
 # -- General configuration ---------------------------------------------------
 
