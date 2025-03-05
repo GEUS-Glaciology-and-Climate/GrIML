@@ -94,7 +94,8 @@ And include the following statement in the acknowledgements:
 
 # Acknowledgements
 
-This work is funded by the ESA Living Planet Fellowship (4000136382/21/I-DT-lr) entitled "Examining Greenland's Ice Marginal Lakes under a Changing Climate". Further support was provided by [PROMICE (Programme for Monitoring of the Greenland Ice Sheet)](https://promice.org), which is funded by the Geological Survey of Denmark and Greenland (GEUS) and the Danish Ministry of Climate, Energy and Utilities under the Danish Cooperation for Environment in the Arctic (DANCEA), conducted in collaboration with DTU Space (Technical University of Denmark) and ASIAQ Greenland Survey.
+This work is funded by the ESA Living Planet Fellowship (4000136382/21/I-DT-lr) entitled "Examining Greenland's Ice Marginal Lakes under a Changing Climate". Further support was provided by [PROMICE (Programme for Monitoring of the Greenland Ice Sheet) and GC-Net (Greenland Climate Network)](https://promice.org), which is funded by the Geological Survey of Denmark and Greenland (GEUS) within the Danish Ministry of Climate, Energy and Utilities. The Danish Finance Law currently supports GEUS for the continuation of PROMICE and GC-Net field and data activities. PROMICE and GC-Net are conducted in collaboration with DTU Space (Technical University of Denmark) and ASIAQ Greenland Survey.
+
 
 
 # References
