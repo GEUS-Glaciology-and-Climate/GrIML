@@ -30,9 +30,9 @@ And include the following statement in the acknowledgements:
 
 This ice-marginal lake dataset is a series of annual inventories, mapping the extent and presence of lakes across Greenland that share a margin with the Greenland Ice Sheet and/or the surrounding ice caps and periphery glaciers. Specifically, the following files are included in this dataset:
 
-- *<YYYYMMDD>-ESA-GRIML-IML-<version>.gpkg*: Ice-marginal lake inventory for a specific year, provided as polygon vector features
-- *CURATED-ESA-GRIML-IML-<version>.gpkg*: All identified ice-marginal lakes across the inventory series, including manually-classified lakes, and provided as point vector features
-- *README-ESA-GRIML-IML-<version>.gpkg*: This dataset readme file
+- *\<YYYYMMDD\>-ESA-GRIML-IML-\<version\>.gpkg*: Ice-marginal lake inventory for a specific year, provided as polygon vector features
+- *CURATED-ESA-GRIML-IML-\<version\>.gpkg*: All identified ice-marginal lakes across the inventory series, including manually-classified lakes, and provided as point vector features
+- *README-ESA-GRIML-IML-\<version\>.gpkg*: This dataset readme file
 
 The annual inventories provide a comprehensive record of all identified ice-marginal lakes, which have been detected using three independent remote sensing techniques:
 
