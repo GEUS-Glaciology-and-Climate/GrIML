@@ -89,7 +89,7 @@ If the `GrIML` package or the Greenland ice marginal lake inventory series are u
 
 And include the following statement in the acknowledgements:
 
-*“Ice marginal lake data provided by the European Space Agency (ESA), and the Programme for Monitoring of the Greenland Ice Sheet (PROMICE) at the Geological Survey of Denmark and Greenland (GEUS) (https://doi.org/10.22008/FK2/MBKW9N).”*
+*“Ice marginal lake data provided by the European Space Agency (ESA), and the Programme for Monitoring of the Greenland Ice Sheet (PROMICE) at the Geological Survey of Denmark and Greenland (GEUS) [https://doi.org/10.22008/FK2/MBKW9N](https://doi.org/10.22008/FK2/MBKW9N).”*
 
 
 # Acknowledgements
