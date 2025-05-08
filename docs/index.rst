@@ -9,9 +9,9 @@ GrIML
 The **GrIML** processing package is for classifying water bodies from satellite imagery using a multi-sensor, multi-method remote sensing approach. It has been used to produce the Greenland ice marginal lake inventory series, which maps the presence and extents of water bodies across Greenland that share a margin with the Greenland Ice Sheet and/or the surroudning ice caps and periphery glaciers since 2016. If the GrIML package or the Greenland ice marginal lake inventory series are presented or used to support results of any kind, please include references to the applicable publications:
 
 - **How, P. et al. (2025) "Greenland Ice Marginal Lake Inventory annual time-series Edition 1". GEUS Dataverse. https://doi.org/10.22008/FK2/MBKW9N**
+- **How, P. et al. (In Review) "The Greenland Ice-Marginal Lake Inventory Series from 2016 to 2023". Earth Syst. Sci. Data Discuss. https://doi.org/10.5194/essd-2025-18**
+- **How, P. (In Review) "A Python package for investigating Greenland's ice marginal lakes under a changing climate". JOSS.**
 - **How, P. et al. (2021) "Greenland-wide inventory of ice marginal lakes using a multi-method approach". Sci. Rep. 11, 4481. https://doi.org/10.1038/s41598-021-83509-1**
-- **How, P. et al. "Greenland ice marginal lake inventory series from 2016 to 2023". In Prep.**
-- **How, P. "A Python package for investigating Greenland's ice marginal lakes under a changing climate". In Prep.**
 
 And include the following statement in the acknowledgments:
 

@@ -1,12 +1,18 @@
 # Dataset tutorials
 
-The GrIML package is used for the production of the Greenland ice marginal lake inventory series, which is freely available through the [GEUS Dataverse](https://doi.org/10.22008/FK2/MBKW9N). This dataset is a series of annual inventories, mapping the extent and presence of lakes across Greenland that share a margin with the Greenland Ice Sheet and/or the surrounding ice caps and periphery glaciers. 
+The GrIML package is used for the production of the Greenland ice-marginal lake inventory series, which is freely available through the [GEUS Dataverse](https://doi.org/10.22008/FK2/MBKW9N). This dataset is a series of annual inventories, mapping the extent and presence of lakes across Greenland that share a margin with the Greenland Ice Sheet and/or the surrounding ice caps and periphery glaciers. 
 
 Here, we will look at how to load and handle the dataset, and provide details on its contents.
 
 ## Dataset contents
 
-This ice marginal lake dataset is a series of annual inventories, mapping the extent and presence of lakes across Greenland that share a margin with the Greenland Ice Sheet and/or the surrounding ice caps and periphery glaciers. The annual inventories provide a comprehensive record of all identified ice marginal lakes, which have been detected using three independent remote sensing techniques:
+This ice-marginal lake dataset is a series of annual inventories, mapping the extent and presence of lakes across Greenland that share a margin with the Greenland Ice Sheet and/or the surrounding ice caps and periphery glaciers. Specifically, the following files are included in this dataset:
+
+- *\<YYYYMMDD\>-ESA-GRIML-IML-\<version\>.gpkg*: Ice-marginal lake inventory for a specific year, provided as polygon vector features
+- *CURATED-ESA-GRIML-IML-\<version\>.gpkg*: All identified ice-marginal lakes across the inventory series, including manually-classified lakes, and provided as point vector features
+- *README-ESA-GRIML-IML-\<version\>.gpkg*: This dataset readme file
+  
+The annual inventories provide a comprehensive record of all identified ice-marginal lakes, which have been detected using three independent remote sensing techniques:
 
 - DEM sink detection using the ArcticDEM (mosaic version 3)
 - SAR backscatter classification from Sentinel-1 imagery
@@ -14,7 +20,7 @@ This ice marginal lake dataset is a series of annual inventories, mapping the ex
 
 All data were compiled and filtered in a semi-automated approach, using a modified version of the [MEaSUREs GIMP ice mask](https://nsidc.org/data/NSIDC-0714/versions/1) to clip the dataset to within 1 km of the ice margin. Each detected lake was then verified manually. The methodology is open-source and provided in the associated [Github repository](https://github.com/GEUS-Glaciology-and-Climate/GrIML) for full reproducibility.
 
-The inventory series was created to better understand the impact of ice marginal lake change on the future sea level budget and the terrestrial and marine landscapes of Greenland, such as its ecosystems and human activities. The dataset is a complete inventory series of Greenland, with no absent data.
+The inventory series was created to better understand the impact of ice-marginal lake change on the future sea level budget and the terrestrial and marine landscapes of Greenland, such as its ecosystems and human activities. The dataset is a complete inventory series of Greenland, with no absent data.
 
 ### Data format
 
@@ -105,7 +111,7 @@ iml_d["centroid"].plot(markersize=0.5)
 
 ## Generating statistics
 
-We can extract basic statistics from an ice marginal lake inventory in the dataset series using simple querying. Let's take the 2022 inventory in this example and first determine the number of classified lakes, and then the number of unique lakes:
+We can extract basic statistics from an ice-marginal lake inventory in the dataset series using simple querying. Let's take the 2022 inventory in this example and first determine the number of classified lakes, and then the number of unique lakes:
 
 ```python
 import geopandas as gpd
@@ -128,7 +134,7 @@ We can count the number of classifications from each method, where `SAR` denotes
 print(iml['method'].value_counts())
 ```
 
-Let's say we would like to count the number of ice marginal lakes that share a margin with the Greenland Ice Sheet and broken down by region. We can do this by first extracting all lakes classified by a common margin with the ice sheet (`ICE_SHEET`) and then count all lakes per region:
+Let's say we would like to count the number of ice-marginal lakes that share a margin with the Greenland Ice Sheet and broken down by region. We can do this by first extracting all lakes classified by a common margin with the ice sheet (`ICE_SHEET`) and then count all lakes per region:
 
 ```python
 # Filter to lakes with an ice sheet margin
@@ -152,7 +158,7 @@ print(iml_d.groupby(['region'])['area_sqkm'].max())
 
 ## Cross inventory comparison
 
-All inventories in the ice marginal lake inventory series can be treated as time-series to look at change in lake abundance and size over time. Let's take an example where we will generate a time-series of lake abundance change at the margins of Greenland's periphery ice caps and glaciers. First we load all inventories as a series of GeoDataFrames:
+All inventories in the ice-marginal lake inventory series can be treated as time-series to look at change in lake abundance and size over time. Let's take an example where we will generate a time-series of lake abundance change at the margins of Greenland's periphery ice caps and glaciers. First we load all inventories as a series of GeoDataFrames:
 
 ```python
 import glob
