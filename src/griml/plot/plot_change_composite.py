@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import Patch
 
 # %%
-workspace1 = '*IML-fv1.shp'
+workspace1 = '/home/pho/python_workspace/GrIML/misc/iml_2016-2023/final/checked/*IML-fv1.shp'
 out_dir = 'out/'
 
 geofiles=[]
@@ -124,6 +124,8 @@ for g in geofiles:
         ice_cap_area[i].append(np.average(icap.area_sqkm))
 
 for i in range(len(b)):
+    print(b[i])
+    print(ice_sheet_area[i])
     ax2.plot(years, ice_sheet_area[i], c=c1[i], label=b[i])
 
 for i in range(len(b)):
@@ -169,7 +171,7 @@ ax4.set_yticklabels(['0.0','1.0','2.0', ''])
 
 # fig.tight_layout(pad=3.0)
 # plt.subplots_adjust(wspace=0, hspace=0)
-# plt.show()
-plt.savefig(out_dir+'lake_change_by_region.png', dpi=300)
+plt.show()
+#plt.savefig(out_dir+'lake_change_by_region.png', dpi=300)
 
 
