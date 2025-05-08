@@ -28,7 +28,14 @@ And include the following statement in the acknowledgements:
 
 ## Dataset contents
 
-This ice-marginal lake dataset is a series of annual inventories, mapping the extent and presence of lakes across Greenland that share a margin with the Greenland Ice Sheet and/or the surrounding ice caps and periphery glaciers. The annual inventories provide a comprehensive record of all identified ice-marginal lakes, which have been detected using three independent remote sensing techniques:
+This ice-marginal lake dataset is a series of annual inventories, mapping the extent and presence of lakes across Greenland that share a margin with the Greenland Ice Sheet and/or the surrounding ice caps and periphery glaciers. Specifically, the following files are included in this dataset:
+
+- *\<YYYYMMDD\>-ESA-GRIML-IML-\<version\>.gpkg*: Ice-marginal lake inventory for a specific year, provided as polygon vector features
+- *ALL-ESA-GRIML-IML-\<version\>.gpkg*: All classified ice-marginal lakes across the inventory series, which have been merged together and therefore one polygon vector features signifies one lake
+- *CURATED-ESA-GRIML-IML-\<version\>.gpkg*: All identified ice-marginal lakes across the inventory series, including manually-classified lakes, and provided as point vector features
+- *README-ESA-GRIML-IML-\<version\>.gpkg*: This dataset readme file
+
+The annual inventories provide a comprehensive record of all identified ice-marginal lakes, which have been detected using three independent remote sensing techniques:
 
 - DEM sink detection using the ArcticDEM (mosaic version 3)
 - SAR backscatter classification from Sentinel-1 imagery
@@ -37,6 +44,7 @@ This ice-marginal lake dataset is a series of annual inventories, mapping the ex
 All data were compiled and filtered in a semi-automated approach, using a modified version of the [MEaSUREs GIMP ice mask](https://nsidc.org/data/NSIDC-0714/versions/1) to clip the dataset to within 1 km of the ice margin. Each detected lake was then verified manually. The methodology is open-source and provided in the associated [Github repository](https://github.com/GEUS-Glaciology-and-Climate/GrIML) for full reproducibility.
 
 The inventory series was created to better understand the impact of ice-marginal lake change on the future sea level budget and the terrestrial and marine landscapes of Greenland, such as its ecosystems and human activities. The dataset is a complete inventory series of Greenland, with no absent data.
+
 
 ### Data format
 
@@ -55,11 +63,13 @@ Each inventory in the inventory series contains the following metadata informati
 | `region`	| Region that lake is located, as defined by Mouginot and Rignot (2019) (`NW`, `NO`, `NE`, `CE`, `SE`, `SW`, `CW`)       	| String |
 | `area_sqkm`	| Areal extent of polygon/s in square kilometres  | Float |
 | `length_km`	| Length of polygon/s in kilometres         		| Float |
+| `centroid`	| Centroid position (x,y) of lake, based on all classifications throughout the inventory series. Coordinates are provided in the WGS NSIDC Sea Ice Polar Stereographic North (EPSG:3413) projected coordinate system | String |
 | `temp_aver`	| Average lake surface temperature estimate (in degrees Celsius), derived from the Landsat 8/9 OLI/TIRS Collection 2 Level 2 surface temperature data product  | Float |
 | `temp_min`	| Minimum pixel lake surface temperature estimate (in degrees Celsius), derived from the Landsat 8/9 OLI/TIRS Collection 2 Level 2 surface temperature data product  | Float |
 | `temp_max`	| Maximum pixel lake surface temperature estimate (in degrees Celsius), derived from the Landsat 8/9 OLI/TIRS Collection 2 Level 2 surface temperature data product  | Float |
 | `temp_stdev`	| Average lake surface temperature estimate standard deviation, derived from the Landsat 8/9 OLI/TIRS Collection 2 Level 2 surface temperature data product  | Float |
 | `temp_count`	| Number of Landsat 8/9 OLI/TIRS Collection 2 Level 2 scenes that lake surface temperature information were derived from. Scenes are only selected from the month of August  | Integer |
+| `temp_date`	| Datetime of all Landsat 8/9 OLI/TIRS Collection 2 Level 2 scene acquisitions that lake surface temperature information are derived from  | String |
 | `method`		| Method of classification (`DEM`, `SAR`, `VIS`)  | String |
 | `source`     | Image source of classification (`ARCTICDEM`, `S1`, `S2`)    | String  |
 | `all_src`     | List of all sources that successfully classified the lake (i.e. all classifications with the same `lake_name` value)  | String         |
@@ -76,7 +86,7 @@ Each inventory in the inventory series contains the following metadata informati
 
 The inventory series of ice-marginal lakes in Greenland has been produced as part of the European Space Agency (ESA) Living Planet Fellowship project "Examining GReenland’s Ice Marginal Lakes under a changing climate (GrIML)", which is a follow-on effort to the 2017 inventory of ice-marginal lakes created under the European Space Agency (ESA) Climate Change Initiative (CCI) in Option 6 of the Glaciers_cci project (4000109873/14/I-NB). 
 
-Upkeep and continuation of the inventory series is supported by PROMICE, funded by the Geological Survey of Denmark and Greenland (GEUS) and the Danish Ministry of Climate, Energy and Utilities under the Danish Cooperation for Environment in the Arctic (DANCEA), conducted in collaboration with DTU Space (Technical University of Denmark) and Asiaq Greenland Survey.
+Upkeep and continuation of the inventory series is supported by PROMICE, funded by the Geological Survey of Denmark and Greenland (GEUS) and the Danish Ministry of Climate, Energy and Utilities, conducted in collaboration with DTU Space (Technical University of Denmark) and Asiaq Greenland Survey.
 
 ## Relevant links
 
