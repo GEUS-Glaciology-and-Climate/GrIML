@@ -54,11 +54,11 @@ def merge_centroids(infile, centroid_file, outfile):
     print('Saving merged geometry to file...')
     gdf_merged.to_file(outfile)
 
-if __name__ == "__main__":
-    from pathlib import Path
-    indir = "/home/pho/python_workspace/GrIML/misc/iml_2016-2023/final/with_lake_temps_100m_buffer/"
-    centroid_file = "/home/pho/python_workspace/GrIML/misc/iml_2016-2023/final/with_lake_temps_100m_buffer_and_centroids/ALL-ESA-GRIML-IML-MERGED-centroids-fv1.gpkg"
-    outdir = "/home/pho/python_workspace/GrIML/misc/iml_2016-2023/final/with_lake_temps_100m_buffer_and_centroids/"
-    for infile in sorted(glob.glob(indir+'*IML-fv1.gpkg')):
-        outfile = outdir + str(Path(infile).name)
-        merge_centroids(infile, centroid_file, outfile)
+#if __name__ == "__main__":
+#    from pathlib import Path
+#    indir = "."
+#    centroid_file = "ALL-ESA-GRIML-IML-centroids-fv2.gpkg"
+#    outdir = "centroids/"
+#    for infile in sorted(glob.glob(indir+'*IML-fv2.gpkg')):
+#        outfile = outdir + str(Path(infile).name)
+#        merge_centroids(infile, centroid_file, outfile)

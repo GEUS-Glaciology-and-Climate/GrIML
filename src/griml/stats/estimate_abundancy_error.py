@@ -46,8 +46,8 @@ def estimate_abundancy_error(gdf1, gdf2):
 
 if __name__ == "__main__":
 
-    indir = '*IML_fv1.gpkg'
+    indir = '*IML_fv2.gpkg'
     infiles = sorted(list(glob.glob(indir)))
     
-    manual_file = 'CURATED-ESA-GRIML-IML-fv1.gpkg'
+    manual_file = 'CURATED-ESA-GRIML-IML-fv2.gpkg'
     estimate_abundancy_error(infiles, manual_file)

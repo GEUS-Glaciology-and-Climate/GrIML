@@ -67,7 +67,7 @@ def merge_and_dissolve_all(indir, outdir):
     gdf_dissolve['geometry'] = gdf_dissolve['geometry'].centroid
     gdf_dissolve.to_file(outdir+'ALL-ESA-GRIML-IML-MERGED-centroids-fv1.gpkg')
 
-if __name__ == "__main__":
-    indir = "/home/pho/python_workspace/GrIML/misc/iml_2016-2023/final/with_lake_temps_100m_buffer/"
-    outdir = indir
-    merge_and_dissolve_all(indir, outdir)
+#if __name__ == "__main__":
+#    indir = "."
+#    outdir = indir
+#    merge_and_dissolve_all(indir, outdir)

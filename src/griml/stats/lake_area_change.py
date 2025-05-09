@@ -89,6 +89,6 @@ def lake_area_change(indir):
     
 
 if __name__ == "__main__":  
-    file1 = '*IML-fv1.shp'
+    file1 = '*IML-fv2.shp'
     gdf_all = lake_area_change(file1)
     # gdf_all.to_file('ALL-ESA-GRIML-IML-MERGED-fv1_areal_change.shp')

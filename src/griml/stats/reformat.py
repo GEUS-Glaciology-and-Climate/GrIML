@@ -51,8 +51,8 @@ def centroids(geofile):
     return geofile
 
 if __name__ == "__main__": 
-    file1 = 'ALL-ESA-GRIML-IML-fv1.gpkg'
-    file3 = 'ALL-ESA-GRIML-IML-fv1_centroid.gpkg' 
+    file1 = 'ALL-ESA-GRIML-IML-fv2.gpkg'
+    file3 = 'ALL-ESA-GRIML-IML-fv2_centroid.gpkg'
     
     gdf = gpd.read_file(file1)
     agg = aggregate(gdf)

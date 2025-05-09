@@ -76,5 +76,5 @@ def region_stats(indir):
 
 
 if __name__ == "__main__":  
-    workspace1 = '*IML-fv1.shp'
+    workspace1 = '*IML-fv2.shp'
     region_stats(workspace1)
