@@ -153,9 +153,9 @@ def region_stats_with_basin_info(infile1, infile2, infile3, outtxt):
     f.close()  
 
 if __name__ == "__main__":  
-    file1 = '20230101-ESA-GRIML-IML-fv1.gpkg'
-    file2 = '../../../other/datasets/drainage_basins/greenland_basins_polarstereo.shp'
-    file3 = '../../../other/datasets/drainage_basins/greenland_basins_polarstereo_lines.shp'
+    file1 = '20230101-ESA-GRIML-IML-fv2.gpkg'
+    file2 = 'greenland_basins_polarstereo.shp'
+    file3 = 'greenland_basins_polarstereo_lines.shp'
     
     outtxt = 'basin_stats.csv'
     

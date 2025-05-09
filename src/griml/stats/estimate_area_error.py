@@ -76,6 +76,6 @@ def estimate_area_error(infile):
     print('Average percentage difference: '+str(average_percentage))
 
 if __name__ == "__main__":
-    indir = '*IML_fv1.gpkg'
+    indir = '*IML_fv2.gpkg'
     infiles = sorted(list(glob.glob(indir)))
     estimate_area_error(infiles)

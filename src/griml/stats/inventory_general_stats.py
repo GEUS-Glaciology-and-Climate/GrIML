@@ -94,7 +94,7 @@ def inventory_general_stats(file1, outfile=None):
 
 if __name__ == "__main__": 
  
-    workspace1 = '*IML-fv1.shp'
+    workspace1 = '*IML-fv2.shp'
     out_dir = 'stats/'
     for f in list(glob.glob(workspace1)):
         name = str(Path(f).stem)

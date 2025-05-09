@@ -71,7 +71,7 @@ def series_general_stats(indir):
     
     print('Median lake size: ')
     print(np.median(gdf_dissolve['area_sqkm'].values))
-    
+
     print('Total number of lakes below 1 sq km: ')
     print(len(gdf_dissolve[gdf_dissolve['area_sqkm']<=1.0]))
     
@@ -95,5 +95,5 @@ def series_general_stats(indir):
     # gdf_dissolve.to_file('ALL-ESA-GRIML-IML-MERGED-fv1_centroids.shp')
 
 if __name__ == "__main__":
-    gdf_files = '*IML-fv1.shp'
+    gdf_files = '*IML-fv2.shp'
     series_general_stats(gdf_files)

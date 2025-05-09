@@ -124,8 +124,8 @@ def method_stats(infile1, infile2, outfile):
 
 if __name__ == "__main__": 
 
-    file1 = '20220101-ESA-GRIML-IML-fv1.gpkg'
-    file2 = '../../../other/datasets/drainage_basins/greenland_basins_polarstereo.shp'
+    file1 = '20220101-ESA-GRIML-IML-fv2.gpkg'
+    file2 = 'greenland_basins_polarstereo.shp'
     
     outtxt = 'method_stats.csv'
 
