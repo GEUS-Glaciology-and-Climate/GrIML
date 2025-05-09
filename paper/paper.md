@@ -57,7 +57,7 @@ The 2016-2023 Greenland ice-marginal lake inventory series was produced with the
 
 These 4 modules represent the 4 processing steps that should be executed in order to produce a standardised ice-marginal lake inventory. Each module contains the functions associated with each step (see \autoref{fig:structure}).
 
-![The GrIML Python package structure, including modules (blue), key module functions (orange), classes (green) and dependencies (yellow) \label{fig:structure}](https://github.com/GEUS-Glaciology-and-Climate/GrIML/blob/main/docs/figures/griml_package_structure.png?raw=true){ width=75% height=75% }
+![The GrIML Python package structure, including modules (blue), key module functions (orange), classes (green) and dependencies (yellow). Arrows between modules represent module dependencies, where the direction of the arrow indicates the dependency source (at the end of the arrow) and target (at the head of the arrow). \label{fig:structure}](https://github.com/GEUS-Glaciology-and-Climate/GrIML/blob/main/docs/figures/griml_package_structure.png?raw=true){ width=75% height=75% }
 
 
 # Usage
