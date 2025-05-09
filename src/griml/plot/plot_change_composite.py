@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import Patch
 
 # %%
-workspace1 = '*IML-fv1.shp'
+workspace1 = '/home/pho/python_workspace/GrIML/misc/iml_2016-2023/final/checked/*IML-fv1.shp'
 out_dir = 'out/'
 
 geofiles=[]
