@@ -34,7 +34,7 @@ $ cd GrIML
 $ pip install .
 ```
 	
-A conda environment `.yaml` file that includes all GrIML's dependencies is available for a straightforward conda set-up of the GrIML package:
+A conda environment `.yml` file that includes all GrIML's dependencies is available for a straightforward conda set-up of the GrIML package:
 
 ```
 $ git clone git@github.com:GEUS-Glaciology-and-Climate/GrIML.git
