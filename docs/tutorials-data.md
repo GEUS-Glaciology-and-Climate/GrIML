@@ -4,6 +4,10 @@ The GrIML package is used for the production of the Greenland ice-marginal lake 
 
 Here, we will look at how to load and handle the dataset, and provide details on its contents.
 
+```{note}
+This tutorial is available as a [jupyter notebook](https://github.com/GEUS-Glaciology-and-Climate/GrIML/blob/main/test/dataset_tutorial.ipynb). We also provide a [Binder environment](https://mybinder.org/v2/gh/GEUS-Glaciology-and-Climate/GrIML/HEAD) within which you can run the notebook (with no need to set up the requirements yourself locally.
+```
+
 ## Dataset contents
 
 This ice-marginal lake dataset is a series of annual inventories, mapping the extent and presence of lakes across Greenland that share a margin with the Greenland Ice Sheet and/or the surrounding ice caps and periphery glaciers. Specifically, the following files are included in this dataset:
