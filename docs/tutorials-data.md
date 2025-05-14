@@ -73,14 +73,14 @@ Or with Python:
 import wget
 
 # Define urls
-urls = ["https://dataverse.geus.dk/api/access/datafile/85133",
-        "https://dataverse.geus.dk/api/access/datafile/85128",
-        "https://dataverse.geus.dk/api/access/datafile/85130",
-        "https://dataverse.geus.dk/api/access/datafile/85127",
-        "https://dataverse.geus.dk/api/access/datafile/85131",
-        "https://dataverse.geus.dk/api/access/datafile/85132",
-        "https://dataverse.geus.dk/api/access/datafile/85134",
-        "https://dataverse.geus.dk/api/access/datafile/85129",
+urls = ["https://dataverse.geus.dk/api/access/datafile/88448",
+        "https://dataverse.geus.dk/api/access/datafile/88440",
+        "https://dataverse.geus.dk/api/access/datafile/88442",
+        "https://dataverse.geus.dk/api/access/datafile/88447",
+        "https://dataverse.geus.dk/api/access/datafile/88446",
+        "https://dataverse.geus.dk/api/access/datafile/88443",
+        "https://dataverse.geus.dk/api/access/datafile/88445",
+        "https://dataverse.geus.dk/api/access/datafile/88449",
         ]
 
 # Download files
@@ -179,6 +179,7 @@ for f in list(sorted(glob.glob(in_dir))):
     
     # Load inventory and dissolve by unique identifications
     gdf = gpd.read_file(f)
+    gdf = gdf.loc[gdf.geometry.is_valid]
     gdf = gdf.dissolve(by='lake_id')
     gdf['area_sqkm'] = gdf.geometry.area/10**6 
     

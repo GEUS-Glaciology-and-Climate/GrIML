@@ -14,26 +14,26 @@ def test_convert():
                  {'b_number':3, 'method':'DEM', 'source':'ARCTICDEM'}] 
     start='20170701' 
     end='20170831'
-    infile = 'test_north_greenland.tif'
+    infile = 'test_data/test_north_greenland.tif'
     convert([infile], proj, band_info, start, end) 
 
 def test_filter(self):
     '''Test vector filtering'''  
-    infile1 = 'test_filter.shp'
+    infile1 = 'test_data/test_filter.shp'
     infile2 = 'test_icemask.shp'      
     filter_vectors([infile1], infile2)
 
 def test_merge(self):
     '''Test vector merging'''
-    infile1 = 'test_merge_1.shp'  
-    infile2 = 'test_merge_2.shp'                  
+    infile1 = 'test_data/test_merge_1.shp'
+    infile2 = 'test_data/test_merge_2.shp'
     merge_vectors([infile1,infile2]) 
 
 def test_metadata(self):
     '''Test metadata population'''
-    infile1 = 'test_merge_2.shp'        
-    infile2 = 'test_placenames.shp'            
-    infile3 = 'greenland_basins_polarstereo.shp'
+    infile1 = 'test_data/test_merge_2.shp'
+    infile2 = 'test_data/test_placenames.shp'
+    infile3 = 'test_data/greenland_basins_polarstereo.shp'
     add_metadata(infile1, infile2, infile3)
 
 if __name__ == "__main__":  
