@@ -1,4 +1,4 @@
-name: 'coverage'
+name: 'Coverage report'
 on:
   pull_request:
     types: [opened, reopened, synchronize, edited]

@@ -107,7 +107,7 @@ class TestGrIML(unittest.TestCase):
         # Run the filter function with generated data
         out = filter_vectors([temp_filter_path], temp_icemask_path)
         self.assertTrue(True)
-        
+
     def test_merge(self):
         '''Test vector merging'''
         # Create two synthetic shapefiles for merging
