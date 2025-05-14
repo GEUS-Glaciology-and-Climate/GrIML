@@ -36,7 +36,7 @@ end='20170831'
 Next we need to define the location of our raster file. A test raster file is provided with GrIML, which can be located using the top level test directory in the repository.
 
 ```python
-infile = 'test/test_north_greenland.tif'
+infile = 'test/test_data/test_north_greenland.tif'
 ```
 
 And then the file can be converted from raster to vector classifications using the `convert` function and the input variables.
@@ -72,8 +72,8 @@ GrIML is provided with a test vector file for filtering, and a test ice mask whi
 
 ```python
 # Define input files
-infile1 = 'test/test_filter.shp'
-infile2 = 'test/test_icemask.shp'
+infile1 = 'test/test_data/test_filter.shp'
+infile2 = 'test/test_data/test_icemask.shp'
 
 # Define output directory to write filtered vectors to
 outdir = "PATH/TO/OUTPUT_DIRECTORY"    
@@ -108,8 +108,8 @@ filter_vectors(all_infiles, infile2, outdir)
 When covering large areas, the classifications are usually split into different files. At this stage, we will merge all files together, to form a complete inventory of ice marginal lake classifications. Test files are provided with GrIML to perform this.
 
 ```python
-infile1 = 'test/test_merge_1.shp'
-infile2 = 'test/test_merge_2.shp'               
+infile1 = 'test/test_data/test_merge_1.shp'
+infile2 = 'test/test_data/test_merge_2.shp'               
 ```
 
 The `merge_vectors` function is used to merge all valid vectors within a list of files. In this case, we will merge all vectors from the two files defined previously. 
@@ -147,13 +147,13 @@ Input files are needed for assigning a placename and a region to each lake. The 
 
 ```python
 # Input test inventory for adding metadata to
-infile1 = 'test/test_merge_2.shp'
+infile1 = 'test/test_data/test_merge_2.shp'
 
 # Placenames file            
-infile2 = 'test/test_placenames.shp' 
+infile2 = 'test/test_data/test_placenames.shp' 
 
 # Regions file           
-infile3 = 'test/greenland_basins_polarstereo.shp'
+infile3 = 'test/test_data/greenland_basins_polarstereo.shp'
 ```
 
 All metadata can be added with the `add_metadata` function.
