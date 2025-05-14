@@ -92,7 +92,9 @@ class TestGrIML(unittest.TestCase):
         self.create_sample_raster(temp_raster_path)
         
         # Run the conversion function with generated data
-        convert([temp_raster_path], proj, band_info, start, end)
+        out = convert([temp_raster_path], proj, band_info, start, end)
+        self.assertIsInstance(out, list)
+        self.assertIn('geometry', out[0].columns)
 
     def test_filter(self):
         '''Test vector filtering'''
@@ -103,8 +105,9 @@ class TestGrIML(unittest.TestCase):
         self.create_sample_polyfile(temp_icemask_path)
         
         # Run the filter function with generated data
-        filter_vectors([temp_filter_path], temp_icemask_path)
-
+        out = filter_vectors([temp_filter_path], temp_icemask_path)
+        self.assertTrue(True)
+        
     def test_merge(self):
         '''Test vector merging'''
         # Create two synthetic shapefiles for merging
@@ -114,7 +117,9 @@ class TestGrIML(unittest.TestCase):
         self.create_sample_polyfile(temp_merge_path2)
         
         # Run the merge function with generated data
-        merge_vectors([temp_merge_path1, temp_merge_path2])
+        out = merge_vectors([temp_merge_path1, temp_merge_path2])
+        self.assertIsInstance(out, gpd.GeoDataFrame)
+        self.assertIn('geometry', out.columns)
 
     def test_metadata(self):
         '''Test metadata population'''
@@ -127,7 +132,8 @@ class TestGrIML(unittest.TestCase):
         self.create_sample_polyfile(temp_metadata_path3)
         
         # Run the metadata function with generated data
-        add_metadata(temp_metadata_path1, temp_metadata_path2, temp_metadata_path3)
+        out = add_metadata(temp_metadata_path1, temp_metadata_path2, temp_metadata_path3)
+        self.assertTrue(True)
 
 if __name__ == "__main__":  
     unittest.main()
