@@ -9,6 +9,7 @@ Here, we will look at how to load and handle the dataset, and provide details on
 This ice-marginal lake dataset is a series of annual inventories, mapping the extent and presence of lakes across Greenland that share a margin with the Greenland Ice Sheet and/or the surrounding ice caps and periphery glaciers. Specifically, the following files are included in this dataset:
 
 - *\<YYYYMMDD\>-ESA-GRIML-IML-\<version\>.gpkg*: Ice-marginal lake inventory for a specific year, provided as polygon vector features
+- *ALL-ESA-GRIML-IML-\<version\>.gpkg*: All classified ice-marginal lakes across the inventory series, which have been merged together and therefore one polygon vector features signifies one lake
 - *CURATED-ESA-GRIML-IML-\<version\>.gpkg*: All identified ice-marginal lakes across the inventory series, including manually-classified lakes, and provided as point vector features
 - *README-ESA-GRIML-IML-\<version\>.gpkg*: This dataset readme file
   
@@ -39,14 +40,17 @@ Each inventory in the inventory series contains the following metadata informati
 | `region`	| Region that lake is located, as defined by Mouginot and Rignot (2019) (`NW`, `NO`, `NE`, `CE`, `SE`, `SW`, `CW`)       	| String |
 | `area_sqkm`	| Areal extent of polygon/s in square kilometres  | Float |
 | `length_km`	| Length of polygon/s in kilometres         		| Float |
+| `centroid`	| Centroid position (x,y) of lake, based on all classifications throughout the inventory series. Coordinates are provided in the WGS NSIDC Sea Ice Polar Stereographic North (EPSG:3413) projected coordinate system | String |
 | `temp_aver`	| Average lake surface temperature estimate (in degrees Celsius), derived from the Landsat 8/9 OLI/TIRS Collection 2 Level 2 surface temperature data product  | Float |
 | `temp_min`	| Minimum pixel lake surface temperature estimate (in degrees Celsius), derived from the Landsat 8/9 OLI/TIRS Collection 2 Level 2 surface temperature data product  | Float |
 | `temp_max`	| Maximum pixel lake surface temperature estimate (in degrees Celsius), derived from the Landsat 8/9 OLI/TIRS Collection 2 Level 2 surface temperature data product  | Float |
 | `temp_stdev`	| Average lake surface temperature estimate standard deviation, derived from the Landsat 8/9 OLI/TIRS Collection 2 Level 2 surface temperature data product  | Float |
+| `temp_count`	| Number of Landsat 8/9 OLI/TIRS Collection 2 Level 2 scenes that lake surface temperature information were derived from. Scenes are only selected from the month of August  | Integer |
+| `temp_date`	| Datetime of all Landsat 8/9 OLI/TIRS Collection 2 Level 2 scene acquisitions that lake surface temperature information are derived from  | String |
 | `method`		| Method of classification (`DEM`, `SAR`, `VIS`)  | String |
 | `source`     | Image source of classification (`ARCTICDEM`, `S1`, `S2`)    | String  |
 | `all_src`     | List of all sources that successfully classified the lake (i.e. all classifications with the same `lake_name` value)  | String         |
-| `num_src`          | Number of sources that successfully classified the lake (`1`, `2`, `3`)     | String | 
+| `num_src`          | Number of sources that successfully classified the lake (`1`, `2`, `3`)     | Integer | 
 | `certainty`     | Certainty of classification, which is calculated from `all_src` as a score between `0` and `1`          | Float | -                             |
 | `start_date` | Start date for classification image filtering 	| String  |
 | `end_date` 	| End date for classification image filtering     | String |
@@ -84,11 +88,11 @@ for u in urls:
     filename = wget.download(u)
 ```
 
-One of the inventories in the dataset series can be opened and plotted in Python using geopandas. In this example, let's take the 2023 inventory:
+One of the inventories in the dataset series can be opened and plotted in Python using geopandas. In this example, let's take the 2023 inventory (version 2):
 
 ```python
 import geopandas as gpd
-iml = gpd.read_file("20230101-ESA-GRIML-IML-fv1.gpkg")
+iml = gpd.read_file("20230101-ESA-GRIML-IML-fv2.gpkg")
 iml.plot(color="red")
 ```
 
@@ -111,13 +115,13 @@ iml_d["centroid"].plot(markersize=0.5)
 
 ## Generating statistics
 
-We can extract basic statistics from an ice-marginal lake inventory in the dataset series using simple querying. Let's take the 2022 inventory in this example and first determine the number of classified lakes, and then the number of unique lakes:
+We can extract basic statistics from an ice-marginal lake inventory in the dataset series using simple querying. Let's take the 2022 inventory (version 2) in this example and first determine the number of classified lakes, and then the number of unique lakes:
 
 ```python
 import geopandas as gpd
 
 # Load inventory 
-iml = gpd.read_file("20220101-ESA-GRIML-IML-fv1.gpkg")
+iml = gpd.read_file("20220101-ESA-GRIML-IML-fv2.gpkg")
 
 # Dissolve by lake id to get all unique lakes as dissolved polygons
 iml_d = iml.dissolve(by='lake_id')
@@ -167,7 +171,7 @@ import geopandas as gpd
 import matplotlib.pyplot as plt
 
 # Define directory
-in_dir = '*IML-fv1.gpkg'
+in_dir = '*IML-fv2.gpkg'
 
 # Iterate through inventories
 gdfs=[]
