@@ -8,8 +8,8 @@ Bug reports are essential to improving the stability and usability of the GrIML 
 - Include a description of how your GrIML configuration is set up, such as from pip install or repository cloning/forking. If installed from pip or locally built, you can find the version of GrIML you are using with the following function
 
 ```python
-from importlib import metadata
-print(metadata.version('griml'))
+import griml
+print(griml.__version__)
 ```
 
 - Explain why the current behaviour is wrong or not desired, and what you expect instead
