@@ -1,0 +1,40 @@
+name: 'coverage'
+on:
+  pull_request:
+    types: [opened, reopened, synchronize, edited]
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: unit_test_coverage
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.10','3.11','3.12']
+    steps:
+      - name: Install Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Install dependencies
+        shell: bash
+        run: |
+          python3 -m pip install --upgrade pip
+          python3 -m pip install Bottleneck coverage
+          python3 -m pip install --upgrade setuptools
+          cd $GITHUB_WORKSPACE
+          pip install .
+      - name: Get unit test coverage report
+        shell: bash
+        run: |
+          coverage run src/griml/test/test.py
+          coverage xml
+      - name: Report coverage
+        uses: orgoro/coverage@v3.2
+        with:
+          coverageFile: coverage.xml
+          token: ${{ secrets.GITHUB_TOKEN }}
