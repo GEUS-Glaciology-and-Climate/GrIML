@@ -3,7 +3,7 @@
 The following tutorial steps make up the full workflow for post-processing of raster classifications to a compiled, production-ready inventory of ice marginal lakes.
 
 ```{note}
-This tutorial is available as both a [python script](https://github.com/GEUS-Glaciology-and-Climate/GrIML/blob/main/test/process_with_test_data.py) and [jupyter notebook](https://github.com/GEUS-Glaciology-and-Climate/GrIML/blob/main/test/process_with_test_data.ipynb). We also provide a [Binder environment](https://mybinder.org/v2/gh/GEUS-Glaciology-and-Climate/GrIML/HEAD) within which you can run the notebook (with no need to set up the requirements yourself locally.
+This tutorial is available as both a [python script](https://github.com/GEUS-Glaciology-and-Climate/GrIML/blob/main/test/process_with_test_data.py) and [jupyter notebook](https://github.com/GEUS-Glaciology-and-Climate/GrIML/blob/main/test/process_with_test_data.ipynb). We also provide a [Binder environment](https://mybinder.org/v2/gh/GEUS-Glaciology-and-Climate/GrIML/HEAD) within which you can run the notebook (with no need to set up the requirements yourself locally).
 ```
 
 ## Converting raster classifications to vectors
