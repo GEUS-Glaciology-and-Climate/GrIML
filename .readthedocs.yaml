@@ -11,7 +11,7 @@ build:
   tools:
     python: "3.8"
   jobs:
-    pre-build:
+    pre_build:
       - mkdir -p docs/tutorials
       - cp tutorials/*.ipynb docs/tutorials/
 
