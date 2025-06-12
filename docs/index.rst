@@ -34,6 +34,7 @@ And include the following statement in the acknowledgements:
    :caption: Contents:
    
    installation
+   Dataset description <README-ESA-GRIML-IML-fv2>
    background
    tutorials/index
    contributing
