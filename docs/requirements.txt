@@ -1,5 +1,7 @@
 geopandas
+jupyter
 myst-parser
+nbsphinx
 numpy
 pandas
 renku-sphinx-theme
