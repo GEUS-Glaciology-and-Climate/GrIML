@@ -35,8 +35,7 @@ And include the following statement in the acknowledgements:
    
    installation
    background
-   tutorials/process_with_test_data
-   tutorials/dataset_tutorial
+   tutorials/index
    contributing
    acknowledgements
    modules
