@@ -34,9 +34,8 @@ And include the following statement in the acknowledgements:
    :caption: Contents:
    
    installation
-   background
-   tutorials-processing
-   tutorials-data
+   background/index
+   tutorials/index
    contributing
    acknowledgements
    modules

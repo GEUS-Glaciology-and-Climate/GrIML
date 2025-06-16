@@ -19,7 +19,8 @@ extensions = [
     'sphinx.ext.mathjax',     
     'sphinx.ext.napoleon',
     'myst_parser',
-    'sphinx_design' 
+    'sphinx_design',
+    'nbsphinx'
 ]
 
 napoleon_google_docstring = False 
