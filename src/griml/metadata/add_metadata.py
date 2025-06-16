@@ -7,7 +7,24 @@ from griml.metadata import assign_id, assign_sources, assign_certainty, \
 import geopandas as gpd
 
 def add_metadata(iml, names, regions, outfile=None):
-        
+    '''Add all metadata information to inventory
+
+    Parameters
+    ----------
+    iml : geopandas.GeoDataFrame or str
+        Inventory GeoDataFrame object or filepath
+    names : geopandas.GeoDataFrame or str
+        Placenames database GeoDataFrame object or filepath
+    regions : geopandas.GeoDataFrame or str
+        Regions identifier GeoDataFrame object or filepath
+    outfile : str
+        Filepath for output to be saved to
+
+    Returns
+    -------
+    iml : geopandas.GeoDataFrame
+        Inventory GeoDataFrame with metadata
+    '''
     iml = load(iml)
     names = load(names)
     regions = load(regions)
@@ -33,6 +50,8 @@ def add_metadata(iml, names, regions, outfile=None):
         print('Saving file...')
         iml.to_file(outfile)
         print('Saved to '+str(outfile)+"_metadata.shp")
+
+    return iml
         
         
 if __name__ == "__main__": 

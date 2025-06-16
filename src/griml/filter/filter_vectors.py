@@ -63,6 +63,8 @@ def filter_vectors(inlist, margin_file, outdir=None, min_area=0.05):
         else:
         	print('No vectors present after filter. Moving to next file.')
         count=count+1
+
+    return filtered
         
 
 

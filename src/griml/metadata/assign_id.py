@@ -9,14 +9,14 @@ def assign_id(gdf, col_name='lake_id'):
     
     Parameters
     ----------
-    gdf : pandas.GeoDataFrame
+    gdf : geopandas.GeoDataFrame
         Vectors to assign identification numbers to
     col_name : str
         Column name to assign ID from
     
     Returns
     -------
-    gdf : pandas.GeoDataFrame
+    gdf : geopandas.GeoDataFrame
         Vectors with assigned IDs
     '''
     # Find overlapping geometries

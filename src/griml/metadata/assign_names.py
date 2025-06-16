@@ -18,16 +18,16 @@ def assign_names(gdf, gdf_names, distance=1000.0):
 
     Parameters
     ----------
-    gdf : pandas.GeoDataFrame
+    gdf : geopandas.GeoDataFrame
         Vectors to assign uncertainty to
-    gdf_names : pandas.GeoDataFrame
+    gdf_names : geopandas.GeoDataFrame
         Vector geodataframe with placenames
     distance : int
         Distance threshold between a given vector and a placename
     
     Returns
     -------
-    gdf : pandas.GeoDataFrame
+    gdf : geopandas.GeoDataFrame
         Vectors with assigned IDs
     '''  
     
