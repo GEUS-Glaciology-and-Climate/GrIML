@@ -53,6 +53,7 @@ def merge_centroids(infile, centroid_file, outfile):
     # Save to file
     print('Saving merged geometry to file...')
     gdf_merged.to_file(outfile)
+    return gdf_merged
 
 #if __name__ == "__main__":
 #    from pathlib import Path

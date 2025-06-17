@@ -67,6 +67,8 @@ def merge_and_dissolve_all(indir, outdir):
     gdf_dissolve['geometry'] = gdf_dissolve['geometry'].centroid
     gdf_dissolve.to_file(outdir+'ALL-ESA-GRIML-IML-MERGED-centroids-fv1.gpkg')
 
+    return gdf_dissolve
+
 #if __name__ == "__main__":
 #    indir = "."
 #    outdir = indir

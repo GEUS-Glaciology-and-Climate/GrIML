@@ -18,14 +18,14 @@ def assign_regions(gdf, gdf_regions, region_name='region'):
 
     Parameters
     ----------
-    gdf : pandas.GeoDataFrame
+    gdf : geopandas.GeoDataFrame
         Vectors to assign region name to
     gdf_regions : pandas.GeoDataFrame
         Vector geodataframe with regions
     
     Returns
     -------
-    gdf : pandas.GeoDataFrame
+    gdf : geopandas.GeoDataFrame
         Vectors with assigned IDs
     '''                                      
 

@@ -6,14 +6,19 @@ def assign_certainty(gdf, search_names, scores, source='all_src'):
     
     Parameters
     ----------
-    gdf : pandas.GeoDataFrame
-        Vectors to assign ncertainty to
+    gdf : geopandas.GeoDataFrame
+        Vectors to assign certainty to
     search_names : str
         Names of sources to count and determine certainty
     scores : list
         List of scores of certainty
     sources : str
         Column name of sources information
+
+    Returns
+    -------
+    gdf : geopandas.GeoDataFrame
+        Vectors with certainty metadata assigned
     '''
     cert=[]
     srcs = list(gdf[source])
