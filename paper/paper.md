@@ -46,7 +46,7 @@ The 2016-2023 Greenland ice-marginal lake inventory series was produced with the
 ![An overview of the Greenland ice-marginal lake inventory series, which maps the number of lakes and their size between the years of 2016 and 2023 [@How2025a]. The map shows the location of each lake, with the symbol signifying area change over time, where green circles represent an increase in lake area, yellow squares represent a decrease in lake area, and white triangles represent an unchanged lake area. Crosshair points denote lakes where no area information is provided. The bar graphs show the change in number of lakes in each region. Base maps are provided by @Moon2023 and region outlines are as defined by @Mouginot2019. \label{fig:inventory}](https://github.com/GEUS-Glaciology-and-Climate/GrIML/blob/main/docs/figures/iml_dataset_overview.png?raw=true){ width=75% height=75% }
 
 
-# Overview of Package contents
+# Overview of package contents
 
 `GrIML` has 4 main modules for processing from raster classifications to a vectorised inventory:
 
