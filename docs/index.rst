@@ -1,7 +1,5 @@
 .. GrIML documentation master file, created by
    sphinx-quickstart on Tue Apr 26 16:51:31 2022.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
 
 GrIML
 =====
@@ -19,14 +17,15 @@ The documentation pages provided with GrIML guide users through: 1) running the 
 
 If the GrIML package or the Greenland ice marginal lake inventory series are presented or used to support results of any kind, please include references to the applicable publications:
 
-- **How, P. et al. (2025) "Greenland Ice-Marginal Lake Inventory annual time-series Edition 1". GEUS Dataverse. https://doi.org/10.22008/FK2/MBKW9N**
-- **How, P. et al. (In Review) "The Greenland Ice-Marginal Lake Inventory Series from 2016 to 2023". Earth Syst. Sci. Data Discuss. https://doi.org/10.5194/essd-2025-18**
-- **How, P. (In Review) "A Python package for investigating Greenland's ice marginal lakes under a changing climate". JOSS.**
-- **How, P. et al. (2021) "Greenland-wide inventory of ice marginal lakes using a multi-method approach". Sci. Rep. 11, 4481. https://doi.org/10.1038/s41598-021-83509-1**
+- **How, P. et al. (2025) "Greenland Ice-Marginal Lake Inventory annual time-series Edition 1". GEUS Dataverse. [https://doi.org/10.22008/FK2/MBKW9N](https://doi.org/10.22008/FK2/MBKW9N)**
+- **How, P. et al. (In Review) "Greenland ice-marginal lake inventory series from 2016 to 2023". Earth Syst.Sci. Data Discuss. [https://doi.org/10.5194/essd-2025-18](https://doi.org/10.5194/essd-2025-18)**
+- **How, P. (In Review) "GrIML: A Python package for investigating Greenland's ice-marginal lakes under a changing climate". J. Open Source Software. [https://joss.theoj.org/papers/a2e10775df44b89f26b0ac9dbf8bc9e3](https://joss.theoj.org/papers/a2e10775df44b89f26b0ac9dbf8bc9e3)**
+- **How, P. et al. (2021) "Greenland-wide inventory of ice marginal lakes using a multi-method approach". Sci. Rep. 11, 4481. [https://doi.org/10.1038/s41598-021-83509-1](https://doi.org/10.1038/s41598-021-83509-1)**
+
 
 And include the following statement in the acknowledgements:
 
-*"Ice-marginal lake data provided by the European Space Agency (ESA), and the Programme for Monitoring of the Greenland Ice Sheet (PROMICE) at the Geological Survey of Denmark and Greenland (GEUS) (https://doi.org/10.22008/FK2/MBKW9N)."*
+*"Ice-marginal lake data provided by the European Space Agency (ESA) and the Programme for Monitoring of the Greenland Ice Sheet (PROMICE) at the Geological Survey of Denmark and Greenland (GEUS) (https://doi.org/10.22008/FK2/MBKW9N)."*
 
 
 .. toctree::
