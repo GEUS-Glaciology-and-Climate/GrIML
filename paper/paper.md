@@ -74,7 +74,12 @@ Full installation instructions are provided at [https://griml.readthedocs.io/en/
 
 ## Tutorials and guides
 
-Two sets of tutorials are provided with `GrIML` for 1) using the processing pipeline ([https://griml.readthedocs.io/en/latest/tutorials-processing.html](https://griml.readthedocs.io/en/latest/tutorials-processing.html)); and 2) handling the produced dataset ([https://griml.readthedocs.io/en/latest/tutorials-data.html](https://griml.readthedocs.io/en/latest/tutorials-data.html)). The processing tutorials guide the user through each processing step from the initial raster classifications to a fully compiled ice-marginal lake dataset. The dataset tutorials provide an overview for how to handle and analyse an ice-marginal lake inventory produced with `GrIML`. This includes examples using the ice-marginal lakes dataset on the GEUS Dataverse [@How2025a], primarily handled with Geopandas [@Geopandas2024] to create spatial plots and time-series (see \autoref{fig:tutorial}).
+Two sets of tutorials are provided with `GrIML` for: 
+1) Using the processing pipeline ([https://griml.readthedocs.io/en/v1.0.2/tutorials/process_with_test_data.html](https://griml.readthedocs.io/en/v1.0.2/tutorials/process_with_test_data.html))
+2) Handling the produced dataset ([https://griml.readthedocs.io/en/v1.0.2/tutorials/dataset_tutorial.html](https://griml.readthedocs.io/en/v1.0.2/tutorials-data.html))
+3) Inputting custom datasets ([https://griml.readthedocs.io/en/v1.0.2/tutorials/using_custom_input_data.html](https://griml.readthedocs.io/en/v1.0.2/tutorials/using_custom_input_data.html))
+
+The processing and custom input data tutorials guide the user through each processing step from the initial raster classifications to a fully compiled ice-marginal lake dataset. The dataset tutorials provide an overview for how to handle and analyse an ice-marginal lake inventory produced with `GrIML`. This includes examples using the ice-marginal lakes dataset on the GEUS Dataverse [@How2025a], primarily handled with Geopandas [@Geopandas2024] to create spatial plots and time-series (see \autoref{fig:tutorial}).
 
 ![An example plot output from the dataset tutorial, where the change in the number of lakes across the ice-marginal lake inventory series is visualised. Each bar represents the number of lakes in one inventory year, with each coloured stage indicating the number of lakes for a given region. \label{fig:tutorial}](https://github.com/GEUS-Glaciology-and-Climate/GrIML/blob/main/docs/figures/iml_time_series_plot.png?raw=true)
 
@@ -84,7 +89,7 @@ Two sets of tutorials are provided with `GrIML` for 1) using the processing pipe
 If the `GrIML` package or the Greenland ice marginal lake inventory series are used to support results of any kind then we ask the authors to include references to the applicable publications:
 
 - How, P. et al. (2025) *“Greenland Ice Marginal Lake Inventory annual time-series Edition 1”.* **GEUS Dataverse.** [https://doi.org/10.22008/FK2/MBKW9N](https://doi.org/10.22008/FK2/MBKW9N)
-- How, P. et al. (Submitted) *“The Greenland Ice-Marginal Lake Inventory Series from 2016 to 2023”.* **Earth System Science Data.**
+- How, P. et al. (In Review) *“The Greenland Ice-Marginal Lake Inventory Series from 2016 to 2023”.* **Earth System Science Data. Discuss**[https://doi.org/10.5194/essd-2025-18](https://doi.org/10.5194/essd-2025-18)
 - How, P. et al. (2021) *“Greenland-wide inventory of ice marginal lakes using a multi-method approach”*. **Scientific Reports** 11, 4481. [https://doi.org/10.1038/s41598-021-83509-1](https://doi.org/10.1038/s41598-021-83509-1)
 
 And include the following statement in the acknowledgements:
