@@ -69,15 +69,15 @@ The `GrIML` Python package is compatible with Python 3.10, 3.11, and 3.12, and c
 $ pip install griml
 ```
 
-Full installation instructions are provided at [https://griml.readthedocs.io/en/latest/installation.html](https://griml.readthedocs.io/en/latest/installation.html).
+Full installation instructions are provided at [https://griml.readthedocs.io/en/stable/installation.html](https://griml.readthedocs.io/en/stable/installation.html).
 
 
 ## Tutorials and guides
 
 Two sets of tutorials are provided with `GrIML` for: 
-1) Using the processing pipeline ([https://griml.readthedocs.io/en/v1.0.2/tutorials/process_with_test_data.html](https://griml.readthedocs.io/en/v1.0.2/tutorials/process_with_test_data.html))
-2) Handling the produced dataset ([https://griml.readthedocs.io/en/v1.0.2/tutorials/dataset_tutorial.html](https://griml.readthedocs.io/en/v1.0.2/tutorials-data.html))
-3) Inputting custom datasets ([https://griml.readthedocs.io/en/v1.0.2/tutorials/using_custom_input_data.html](https://griml.readthedocs.io/en/v1.0.2/tutorials/using_custom_input_data.html))
+1) Using the processing pipeline ([https://griml.readthedocs.io/en/stable/tutorials/process_with_test_data.html](https://griml.readthedocs.io/en/stable/tutorials/process_with_test_data.html))
+2) Handling the produced dataset ([https://griml.readthedocs.io/en/stable/tutorials/dataset_tutorial.html](https://griml.readthedocs.io/en/stable/tutorials-data.html))
+3) Inputting custom datasets ([https://griml.readthedocs.io/en/stable/tutorials/using_custom_input_data.html](https://griml.readthedocs.io/en/stable/tutorials/using_custom_input_data.html))
 
 The processing and custom input data tutorials guide the user through each processing step from the initial raster classifications to a fully compiled ice-marginal lake dataset. The dataset tutorials provide an overview for how to handle and analyse an ice-marginal lake inventory produced with `GrIML`. This includes examples using the ice-marginal lakes dataset on the GEUS Dataverse [@How2025a], primarily handled with Geopandas [@Geopandas2024] to create spatial plots and time-series (see \autoref{fig:tutorial}).
 
