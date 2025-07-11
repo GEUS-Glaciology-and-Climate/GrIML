@@ -28,7 +28,7 @@ The `GrIML` Python package is for processing classified water bodies from satell
 ![An overview of the GrIML Python package workflow for generating ice-marginal lake inventories. The boxes refer to the four main modules and processing stages (reading from left to right), the coloured circles represent intermediary outputs to each processing stage, and the grey circles represent additional inputs. \label{fig:workflow}](https://github.com/GEUS-Glaciology-and-Climate/GrIML/blob/main/docs/figures/griml_workflow_without_gee.png?raw=true){ width=95% height=95% }
 
 
-Initial rasterised binary classifications denoting water bodies can be inputted to `GrIML` to convert, filter, and merge into a unified ice-marginal lake vector dataset, populated with useful metadata and analysed with relevant statistical information (\autoref{fig:workflow}).
+Initial rasterised binary classifications denoting water bodies can be inputted to `GrIML` to convert, filter, and merge into a unified ice-marginal lake vector dataset, populated with useful metadata and analysed with relevant statistical information (\autoref{fig:workflow}). The workflow to produce the rasterised binary classifications is provided with the `GrIML` [Github repository](https://github.com/GEUS-Glaciology-and-Climate/GrIML/tree/main/gee_scripts) as both Javascript and Python scripts, which are run with Google Earth Engine.
 
 # Statement of need
 
