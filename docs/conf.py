@@ -9,7 +9,7 @@ sys.path.insert(0, os.path.abspath('../src/griml/'))
 project = 'GrIML'
 copyright = '2025, Penelope How'
 author = 'Penelope How'
-release = '1.0.1'
+release = '1.0.3'
 
 # -- General configuration ---------------------------------------------------
 
