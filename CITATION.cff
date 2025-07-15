@@ -1,44 +1,32 @@
-
-cff-version: 1.2.0
-title: GrIML
-message: >-
-  If you use this software, please cite it using the
-  metadata from this file
-type: software
+cff-version: "1.2.0"
 authors:
-  - given-names: Penelope
-    family-names: How
-    email: pho@geus.dk
-    affiliation: GEUS
-    orcid: 'https://orcid.org/0000-0002-8088-8497'
-identifiers:
-  - type: doi
-    value: https://joss.theoj.org/papers/10.21105/joss.07927
-    description: Software paper
-  - type: doi
-    value: https://doi.org/10.5194/essd-2025-18
-    description: Data description paper
-  - type: doi
-    value: https://doi.org/10.22008/FK2/MBKW9N
-    description: Corresponding dataset
-  - type: doi
-    value: https://doi.org/10.5281/zenodo.14718898
-    description: Zenodo DOI for releases
-repository-code: 'https://github.com/GEUS-Glaciology-and-Climate/GrIML'
-url: 'https://griml.readthedocs.io/'
-keywords:
-  - remote-sensing
-  - satellite-imagery
-  - esa
-  - cryosphere
-  - glofs
-  - ice-marginal-lakes
-  - glacial-lakes
-  - python
-  - google-earth-engine
-license: MIT
-
-
-
-
-
+- family-names: How
+  given-names: Penelope
+  orcid: "https://orcid.org/0000-0002-8088-8497"
+contact:
+- family-names: How
+  given-names: Penelope
+  orcid: "https://orcid.org/0000-0002-8088-8497"
+doi: 10.5281/zenodo.15683327
+message: If you use this software, please cite our article in the
+  Journal of Open Source Software.
+preferred-citation:
+  authors:
+  - family-names: How
+    given-names: Penelope R.
+    orcid: "https://orcid.org/0000-0002-8088-8497"
+  date-published: 2025-07-14
+  doi: 10.21105/joss.07927
+  issn: 2475-9066
+  issue: 111
+  journal: Journal of Open Source Software
+  publisher:
+    name: Open Journals
+  start: 7927
+  title: "GrIML: A Python package for investigating Greenland's
+    ice-marginal lakes under a changing climate"
+  type: article
+  url: "https://joss.theoj.org/papers/10.21105/joss.07927"
+  volume: 10
+title: "GrIML: A Python package for investigating Greenland's
+  ice-marginal lakes under a changing climate"
