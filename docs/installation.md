@@ -15,7 +15,7 @@ $ pip install --upgrade git+https://github.com/GEUS-Glaciology-and-Climate/GrIML
 ```
 
 ```{important}
-GrIML is tested for compatibility with Python 3.10, 3.11 and 3.12
+GrIML is tested for compatibility with Python 3.10, 3.11, 3.12 and 3.13
 ```
 
 GrIML comes with unit testing for ensuring that your installation is working. Once installed, run the following line to test GrIML's modules.
