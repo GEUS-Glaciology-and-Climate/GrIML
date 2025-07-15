@@ -47,7 +47,7 @@ If the workflow or data are presented or used to support results of any kind, pl
 
 *How, P. et al. (In Review) "Greenland ice-marginal lake inventory series from 2016 to 2023". Earth Syst.Sci. Data Discuss. [https://doi.org/10.5194/essd-2025-18](https://doi.org/10.5194/essd-2025-18)*
 
-*How, P. (In Review) "GrIML: A Python package for investigating Greenland's ice-marginal lakes under a changing climate". J. Open Source Software. [https://joss.theoj.org/papers/a2e10775df44b89f26b0ac9dbf8bc9e3](https://joss.theoj.org/papers/a2e10775df44b89f26b0ac9dbf8bc9e3)*
+*How, P. (2025). "GrIML: A Python package for investigating Greenland's ice-marginal lakes under a changing climate". J. Open Source Software 10(111), 7927, [https://doi.org/10.21105/joss.07927](https://doi.org/10.21105/joss.07927)*
 
 *How, P. et al. (2021) "Greenland-wide inventory of ice marginal lakes using a multi-method approach". Sci. Rep. 11, 4481. [https://doi.org/10.1038/s41598-021-83509-1](https://doi.org/10.1038/s41598-021-83509-1)*
 
