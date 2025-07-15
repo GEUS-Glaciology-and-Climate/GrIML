@@ -13,14 +13,17 @@ authors:
     orcid: 'https://orcid.org/0000-0002-8088-8497'
 identifiers:
   - type: doi
-    value: https://doi.org/10.5281/zenodo.14718898
-    description: Zenodo DOI for releases
+    value: https://joss.theoj.org/papers/10.21105/joss.07927
+    description: Software paper
+  - type: doi
+    value: https://doi.org/10.5194/essd-2025-18
+    description: Data description paper
   - type: doi
     value: https://doi.org/10.22008/FK2/MBKW9N
     description: Corresponding dataset
   - type: doi
-    value: https://doi.org/10.5194/essd-2025-18
-    description: Data description paper
+    value: https://doi.org/10.5281/zenodo.14718898
+    description: Zenodo DOI for releases
 repository-code: 'https://github.com/GEUS-Glaciology-and-Climate/GrIML'
 url: 'https://griml.readthedocs.io/'
 keywords:
@@ -34,3 +37,8 @@ keywords:
   - python
   - google-earth-engine
 license: MIT
+
+
+
+
+
