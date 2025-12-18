@@ -62,7 +62,7 @@ def raster_to_vector(infile, proj, band_info, startdate, enddate, outfile=None, 
         if os.path.isfile(outfile):
             if overwrite:
                 print("Overwriting existing file")
-                all_gdf.tofile(outfile)
+                all_gdf.to_file(outfile)
                 print("Overwritten file saved to " + str(outfile))
             else:
                 print("File exists and will not be overwritten. Moving to next file")
