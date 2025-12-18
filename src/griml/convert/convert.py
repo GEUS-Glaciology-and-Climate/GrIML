@@ -16,8 +16,8 @@ def convert(indir, proj, band_info, startdate, enddate, outdir=None, overwrite=F
         List of files or geopandas.dataframe.DataFrame objects to merge
     proj : str
         Projection identifier
-    band_info : int
-        Band number
+    band_info : list
+        Band information
     startdate : str
         Start date
     enddate : str

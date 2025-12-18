@@ -18,8 +18,8 @@ def raster_to_vector(infile, proj, band_info, startdate, enddate, outfile=None, 
         Input file location as string
     proj : str
         Projection identifier
-    band_info : int
-        Band number
+    band_info : list
+        Band information
     startdate : str
         Start date 
     enddate : str

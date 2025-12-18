@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-__all__ = ["assign_source"]
+__all__ = ["assign_sources"]
 
 def assign_sources(gdf, 
                    col_names=["lake_id", "source"]):
