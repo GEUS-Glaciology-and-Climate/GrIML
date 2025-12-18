@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+import os
 import geopandas as gpd
 import pandas as pd
 from glob import glob
@@ -18,7 +19,7 @@ def merge_vectors(inlist, proj="EPSG:3413", outfile=None, overwrite=False):
     proj : str, optional
         Projection identifier
     outfile : str, optional
-        Output file path to write files to
+        Output file path to write files toall_gdf.to_file(outfile)
     overwrite : bool, optional
         Flag to overwrite existing file
     Returns
@@ -53,10 +54,18 @@ def merge_vectors(inlist, proj="EPSG:3413", outfile=None, overwrite=False):
     # all_gdf = gpd.GeoDataFrame(all_gdf, geometry=all_gdf.geometry, 
     #                             crs=proj)
 
-    if outfile is not None:    
-        print("Saving file...")
-        all_gdf.to_file(outfile)
-        print("Saved to "+str(outfile))
+    if outfile is not None:
+        if os.path.isfile(outfile):
+            if overwrite:
+                print("Overwriting existing file")
+                all_gdf.tofile(outfile)
+                print("Overwritten file saved to " + str(outfile))
+            else:
+                print("File exists and will not be overwritten. Moving to next file")
+        else:
+            print("Writing new file")
+            all_gdf.to_file(outfile)
+            print("New file saved to "+str(outfile))
           
     return all_gdf
 
