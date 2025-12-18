@@ -76,5 +76,5 @@ def region_stats(indir):
 
 
 if __name__ == "__main__":  
-    workspace1 = '*IML-fv2.shp'
+    workspace1 = '/home/pho/python_workspace/GrIML/misc/iml_2016-2023/final/with_lake_temps_100m_buffer_and_centroids/*01-ESA-GRIML-IML-fv2.gpkg'
     region_stats(workspace1)

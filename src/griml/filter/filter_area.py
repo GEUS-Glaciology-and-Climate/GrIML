@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+__all__ =["filter_area"]
+
 def filter_area(iml, min_area=0.05):
-    '''Filter vectors in GeoDataframe object by a defined area
+    """Filter vectors in GeoDataframe object by a defined area
     
     Parameters
     ----------
@@ -15,8 +17,8 @@ def filter_area(iml, min_area=0.05):
     -------
     iml : geopandas.GeoDataframe
         Filtered vector object
-    '''
-    iml['area_sqkm'] = iml['geometry'].area/10**6
-    iml['length_km'] = iml['geometry'].length/1000
+    """
+    iml["area_sqkm"] = iml["geometry"].area/10**6
+    iml["length_km"] = iml["geometry"].length/1000
     iml = iml[(iml.area_sqkm >= min_area)]
     return iml

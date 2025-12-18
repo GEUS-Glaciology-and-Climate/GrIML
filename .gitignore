@@ -1,7 +1,7 @@
 *.drawio
-
+**/__pycache__/
 build/*
 misc/*
 .idea/*
-
+.coverage
 src/griml.egg-info/*
