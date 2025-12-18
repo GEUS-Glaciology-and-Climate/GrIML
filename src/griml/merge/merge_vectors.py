@@ -58,7 +58,7 @@ def merge_vectors(inlist, proj="EPSG:3413", outfile=None, overwrite=False):
         if os.path.isfile(outfile):
             if overwrite:
                 print("Overwriting existing file")
-                all_gdf.tofile(outfile)
+                all_gdf.to_file(outfile)
                 print("Overwritten file saved to " + str(outfile))
             else:
                 print("File exists and will not be overwritten. Moving to next file")

@@ -53,7 +53,7 @@ def add_metadata(iml, names, regions, outfile=None, overwrite=False):
         if os.path.isfile(outfile):
             if overwrite:
                 print("Overwriting existing file")
-                iml.tofile(outfile)
+                iml.to_file(outfile)
                 print("Overwritten file saved to " + str(outfile))
             else:
                 print("File exists and will not be overwritten. Moving to next file")

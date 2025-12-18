@@ -5,6 +5,7 @@ from griml.filter import filter_margin, filter_area
 from griml.load import load
 import geopandas as gpd
 from pathlib import Path
+import os
 
 __all__ = ["filter_vectors"]
 
@@ -66,7 +67,7 @@ def filter_vectors(inlist, margin_file, min_area=0.05, outdir=None, overwrite=Fa
                 if os.path.isfile(outfile):
                     if overwrite:
                         print("Overwriting existing file...")
-                        vectors.tofile(outfile)
+                        vectors.to_file(outfile)
                         print("Overwritten file saved to " + str(outfile))
                     else:
                         print("File exists and will not be overwritten. Moving to next file")
