@@ -48,14 +48,19 @@ def add_metadata(iml, names, regions, outfile=None, overwrite=False):
         
     print("Assigning placenames...")
     iml = assign_names(iml, names)
-    
-    if outfile:
-        if os.path.exists(outfile) and overwrite:
-            print("File exists and will not be overwritten")
+
+    if outfile is not None:
+        if os.path.isfile(outfile):
+            if overwrite:
+                print("Overwriting existing file")
+                iml.tofile(outfile)
+                print("Overwritten file saved to " + str(outfile))
+            else:
+                print("File exists and will not be overwritten. Moving to next file")
         else:
-            print("Saving file...")
+            print("Writing new file")
             iml.to_file(outfile)
-            print("Saved to "+str(outfile)+"_metadata.gpkg")
+            print("New file saved to " + str(outfile))
 
     return iml
         

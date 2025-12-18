@@ -59,13 +59,24 @@ def filter_vectors(inlist, margin_file, min_area=0.05, outdir=None, overwrite=Fa
 
         # Retain and save if vectors are present after filtering
         if vectors.shape[0]>0:
+
             if outdir is not None:
                 outfile = Path(outdir).joinpath(name)
-                if outfile.is_file() and overwrite:
-                    print("Output file exists and will not be overwritten")
+
+                if os.path.isfile(outfile):
+                    if overwrite:
+                        print("Overwriting existing file...")
+                        vectors.tofile(outfile)
+                        print("Overwritten file saved to " + str(outfile))
+                    else:
+                        print("File exists and will not be overwritten. Moving to next file")
                 else:
+                    print("Writing new file...")
                     vectors.to_file(outfile)
+                    print("New file saved to " + str(outfile))
+
             filtered.append(vectors)
+
         else:
         	print("No vectors present after filter. Moving to next file.")
         count=count+1

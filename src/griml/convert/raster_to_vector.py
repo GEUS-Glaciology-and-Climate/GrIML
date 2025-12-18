@@ -56,15 +56,23 @@ def raster_to_vector(infile, proj, band_info, startdate, enddate, outfile=None, 
     all_gdf["row_id"] = all_gdf.index + 1
     # all_gdf = all_gdf.reset_index(drop=False, inplace=False)
     all_gdf = all_gdf.set_index("row_id") 
-    
+
     # Save and return
     if outfile is not None:
-        if os.path.isfile(outfile) and overwrite:
-            print("File exists and will not be overwritten")
+        if os.path.isfile(outfile):
+            if overwrite:
+                print("Overwriting existing file")
+                all_gdf.tofile(outfile)
+                print("Overwritten file saved to " + str(outfile))
+            else:
+                print("File exists and will not be overwritten. Moving to next file")
         else:
-            print("Saving to file...")
+            print("Writing new file")
             all_gdf.to_file(outfile)
+            print("New file saved to " + str(outfile))
+
     return all_gdf
+
 
 def get_band_vectors(infile, band):
     """Read raster band and extract shapes as polygon vectors"""
