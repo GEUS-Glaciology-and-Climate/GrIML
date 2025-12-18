@@ -5,6 +5,7 @@ from griml.filter import filter_margin, filter_area
 from griml.load import load
 import geopandas as gpd
 from pathlib import Path
+import os
 
 __all__ = ["filter_vectors"]
 
