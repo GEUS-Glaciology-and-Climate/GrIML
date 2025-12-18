@@ -3,8 +3,10 @@
 
 from scipy.sparse.csgraph import connected_components
 
-def assign_id(gdf, col_name='lake_id'):
-    '''Assign unique identification numbers to non-overlapping geometries in
+__all__ = ["assign_id"]
+
+def assign_id(gdf, col_name="lake_id"):
+    """Assign unique identification numbers to non-overlapping geometries in
     geodataframe
     
     Parameters
@@ -18,9 +20,9 @@ def assign_id(gdf, col_name='lake_id'):
     -------
     gdf : geopandas.GeoDataFrame
         Vectors with assigned IDs
-    '''
+    """
     # Find overlapping geometries
-    geoms = gdf['geometry']
+    geoms = gdf["geometry"]
     geoms.reset_index(inplace=True, drop=True)        
     overlap_matrix = geoms.apply(lambda x: geoms.overlaps(x)).values.astype(int)
     

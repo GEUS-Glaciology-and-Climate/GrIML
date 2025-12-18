@@ -2,9 +2,10 @@
 # -*- coding: utf-8 -*-
 
 import geopandas as gpd
+__all__ = ["filter_margin"]
 
 def filter_margin(iml, margin_buffer):
-    '''Filter vectors by polygon (such as a margin buffer) using a spatial join
+    """Filter vectors by polygon (such as a margin buffer) using a spatial join
     
     Parameters
     ----------
@@ -17,10 +18,10 @@ def filter_margin(iml, margin_buffer):
     -------
     iml : geopandas.GeoDataframe
         Filtered vector object
-    '''
-    iml = gpd.sjoin(iml, margin_buffer, how='left')
-    iml = iml[iml['index_right']==0]
-    iml = iml.drop(columns='index_right')
+    """
+    iml = gpd.sjoin(iml, margin_buffer, how="left")
+    iml = iml[iml["index_right"]==0]
+    iml = iml.drop(columns="index_right")
 
     # Calculate geometry info
     iml.reset_index(inplace=True, drop=True)

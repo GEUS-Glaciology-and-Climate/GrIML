@@ -9,7 +9,7 @@ from pathlib import Path
 def merge_and_dissolve_all(indir, outdir):
     
     gdfs=[]
-    for g in sorted(list(glob.glob(indir+'*IML-fv1.shp'))):
+    for g in sorted(list(glob.glob(indir+'*.gpkg'))):
         print(g)
         gdf = gpd.read_file(g)
         year = str(Path(g).name)[0:4]
@@ -60,12 +60,12 @@ def merge_and_dissolve_all(indir, outdir):
 
     # Save to file
     print('Saving merged geometries to file...')
-    gdf_dissolve.to_file(outdir+'ALL-ESA-GRIML-IML-MERGED-fv1.gpkg')
+    gdf_dissolve.to_file(outdir+'ALL-ESA-GRIML-IML-MERGED.gpkg')
     
     # Add centroid position
     print('Saving centroid geometries to file...')
     gdf_dissolve['geometry'] = gdf_dissolve['geometry'].centroid
-    gdf_dissolve.to_file(outdir+'ALL-ESA-GRIML-IML-MERGED-centroids-fv1.gpkg')
+    gdf_dissolve.to_file(outdir+'ALL-ESA-GRIML-IML-MERGED-centroids.gpkg')
 
     return gdf_dissolve
 

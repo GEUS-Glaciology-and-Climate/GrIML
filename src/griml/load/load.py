@@ -5,10 +5,14 @@ import geopandas as gpd
 import pandas as pd
 import os, errno
 from pathlib import Path
-import griml
+
+__all__ = [
+    "load",
+    "load_vector_from_file",
+]
 
 def load(i): 
-    '''Load vectors into appropriate format for processing
+    """Load vectors into appropriate format for processing
 
     Parameters
     ----------
@@ -19,36 +23,36 @@ def load(i):
     -------
     out : geopandas.geodataframe.GeoDataFrame
         Output vector object
-    '''
+    """
     if is_string(i):
         if is_filepath(i):
             out = load_vector_from_file(i)
             return out
         
         else:
-            ValueError('Expected valid vector filepath, but instead got '+i)
+            ValueError("Expected valid vector filepath, but instead got "+i)
 
     elif is_geo_object(i):
         out = i
         return out
     
     else:  
-        TypeError('Expected str, geopandas.geodataframe.GeoDataFrame or pandas.core.series.Series object, but instead got '+str(type(i)))
+        TypeError("Expected str, geopandas.geodataframe.GeoDataFrame or pandas.core.series.Series object, but instead got "+str(type(i)))
     
 def load_vector_from_file(infile):
-    '''Load vector object from file'''
+    """Load vector object from file"""
     gdf = gpd.read_file(infile)
     return gdf
 
 def is_string(n):
-    '''Check if input for loading is string'''
+    """Check if input for loading is string"""
     if type(n)==str:
         return True
     else:
         return False
 
 def is_filepath(n):
-    '''Check if string is valid file'''
+    """Check if string is valid file"""
     if os.path.isfile(n):
         return True
     else:
@@ -56,7 +60,7 @@ def is_filepath(n):
             errno.ENOENT, os.strerror(errno.ENOENT), n)
 
 def is_dir(n):
-    '''Check if string is valid directory'''
+    """Check if string is valid directory"""
     if os.path.isdir(str(Path(n).parent)):
         return True
     else:
@@ -64,7 +68,7 @@ def is_dir(n):
             errno.ENOENT, os.strerror(errno.ENOENT), n)
     
 def is_geo_object(typ):
-    '''Check if object is valid vector object'''
+    """Check if object is valid vector object"""
     if type(typ)==gpd.geodataframe.GeoDataFrame or type(typ)==pd.core.series.Series:
         return True
     else:
@@ -72,7 +76,7 @@ def is_geo_object(typ):
         
 if __name__ == "__main__":
 
-    infile1 = os.path.join(os.path.dirname(griml.__file__),'test/test_icemask.shp') 
+    infile1 = "test/test_data/test_icemask.gpkg"
     test1 = load(infile1)
     
     g = gpd.read_file(infile1)

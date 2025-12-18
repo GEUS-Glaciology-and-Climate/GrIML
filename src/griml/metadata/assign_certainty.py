@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-def assign_certainty(gdf, search_names, scores, source='all_src'):
-    '''Assign certainty score to geodataframe based on sources
+__all__ = ["assign_certainty"]
+
+def assign_certainty(gdf, search_names, scores, source="all_src"):
+    """Assign certainty score to geodataframe based on sources
     
     Parameters
     ----------
@@ -19,25 +21,27 @@ def assign_certainty(gdf, search_names, scores, source='all_src'):
     -------
     gdf : geopandas.GeoDataFrame
         Vectors with certainty metadata assigned
-    '''
+    """
     cert=[]
     srcs = list(gdf[source])
 
     for a in range(len(srcs)):
-        if srcs[a].split(', ')==1:
-            out = _get_score(srcs.split(', '))
+        if srcs[a].split(", ")==1:
+            out = _get_score(srcs.split(", "))
             cert.append(out)    
         else:
             out=[]
-            for b in srcs[a].split(', '):
-                out.append(_get_score(b, search_names, scores))
+            for b in srcs[a].split(", "):
+                out.append(get_score(b,
+                                     search_names,
+                                     scores))
             cert.append(sum(out))
 
-    gdf['certainty'] = cert
+    gdf["certainty"] = cert
     return gdf
 
-def _get_score(value, search_names, scores):
-    '''Determine score from search string'''
+def get_score(value, search_names, scores):
+    """Determine score from search string"""
     if search_names[0] in value:
         return scores[0]
     elif search_names[1] in value:
