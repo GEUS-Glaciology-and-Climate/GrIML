@@ -4,17 +4,18 @@
 import geopandas as gpd
 import pandas as pd
 import glob
-from pathlib import Path
+
+__all__ = ["merge_and_dissolve_all"]
 
 def merge_and_dissolve_all(indir, outdir):
     
     gdfs=[]
-    for g in sorted(list(glob.glob(indir+'*.gpkg'))):
+    for g in sorted(list(glob.glob(indir+'*0101-ESA-GRIML-IML-fv4.gpkg'))):
         print(g)
         gdf = gpd.read_file(g)
-        year = str(Path(g).name)[0:4]
-        col_name = 'temp_'+year
-        gdf[col_name] = gdf['temp_aver']
+   #     year = str(Path(g).name)[0:4]
+   #     col_name = 'temp_'+year
+   #     gdf[col_name] = gdf['temp_aver']
         gdfs.append(gdf)
     
     all_gdf = pd.concat(gdfs)
@@ -26,9 +27,9 @@ def merge_and_dissolve_all(indir, outdir):
     gdf_dissolve = gdf_dissolve.sort_values(by='lake_id')
     gdf_dissolve['area_sqkm']=[g.area/10**6 for g in list(gdf_dissolve['geometry'])]
     gdf_dissolve['length_km']=[g.length/1000 for g in list(gdf_dissolve['geometry'])]
-    gdf_dissolve['temp_all']= gdf_dissolve[['temp_2016', 'temp_2017', 'temp_2018',
-                                             'temp_2019', 'temp_2020', 'temp_2021',
-                                             'temp_2022', 'temp_2023']].mean(axis=1, skipna=True)
+#    gdf_dissolve['temp_all']= gdf_dissolve[['temp_2016', 'temp_2017', 'temp_2018',
+#                                             'temp_2019', 'temp_2020', 'temp_2021',
+#                                             'temp_2022', 'temp_2023']].mean(axis=1, skipna=True)
 
     # Add centroid position
     centroids = gdf_dissolve['geometry'].centroid
@@ -52,6 +53,8 @@ def merge_and_dissolve_all(indir, outdir):
                    'temp_2021',
                    'temp_2022',
                    'temp_2023',
+                   'temp_2024',
+                   'temp_2025',
                    'temp_all',
                    'verified',
                    'verif_by',
@@ -68,8 +71,3 @@ def merge_and_dissolve_all(indir, outdir):
     gdf_dissolve.to_file(outdir+'ALL-ESA-GRIML-IML-MERGED-centroids.gpkg')
 
     return gdf_dissolve
-
-#if __name__ == "__main__":
-#    indir = "."
-#    outdir = indir
-#    merge_and_dissolve_all(indir, outdir)

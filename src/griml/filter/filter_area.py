@@ -3,7 +3,7 @@
 
 __all__ =["filter_area"]
 
-def filter_area(iml, min_area=0.05):
+def filter_area(iml, min_area, max_area):
     """Filter vectors in GeoDataframe object by a defined area
     
     Parameters
@@ -21,4 +21,5 @@ def filter_area(iml, min_area=0.05):
     iml["area_sqkm"] = iml["geometry"].area/10**6
     iml["length_km"] = iml["geometry"].length/1000
     iml = iml[(iml.area_sqkm >= min_area)]
+    iml = iml[(iml.area_sqkm <= max_area)]
     return iml

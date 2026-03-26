@@ -23,6 +23,7 @@ classifiers = [
     "Topic :: Scientific/Engineering",
     "Operating System :: OS Independent"
 ]
+requires-python = ">= 3.10"
 dependencies = [
     "geopandas",
     "pandas",
@@ -30,7 +31,9 @@ dependencies = [
     "Shapely",
     "rasterio"
 ]
-requires-python = ">= 3.10"
+
+# [project.optional-dependencies]
+# parallel = ["dask_geopandas"]
 
 [project.urls]
 "Homepage" = "https://github.com/GEUS-Glaciology-and-Climate/GrIML"

@@ -4,3 +4,4 @@ from griml.metadata.assign_names import *
 from griml.metadata.assign_regions import *
 from griml.metadata.assign_sources import *
 from griml.metadata.add_metadata import *
+from griml.metadata.assign_attributes_from_dataframe import *

@@ -9,7 +9,7 @@ import os
 
 __all__ = ["filter_vectors"]
 
-def filter_vectors(inlist, margin_file, min_area=0.05, outdir=None, overwrite=False):
+def filter_vectors(inlist, margin_file, min_area=0.05, max_area=500.00, outdir=None, overwrite=False):
     """Filter vectors by area and margin proximity
 
     Parameters
@@ -52,9 +52,9 @@ def filter_vectors(inlist, margin_file, min_area=0.05, outdir=None, overwrite=Fa
         vectors = load(infile)
 
         # Perform filtering steps
-        vectors = filter_area(vectors, min_area)
-        print(f"{vectors.shape[0]} features over 0.05 sq km")
-        
+        vectors = filter_area(vectors, min_area, max_area)
+        print(f"{vectors.shape[0]} features between {min_area} and {max_area} sq km")
+
         vectors = filter_margin(vectors, margin_buff)
         print(f"{vectors.shape[0]} features within 500 m of margin")    
 
