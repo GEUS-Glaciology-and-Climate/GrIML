@@ -40,7 +40,8 @@ def lake_area_change(indir):
         f['idx'] = f['lake_id']
         f = f.dissolve(by='idx')
         f['area_sqkm']=[poly.area/10**6 for poly in list(f['geometry'])]
-        year=list(f['start_date'])[0]
+        print(list(f.columns))
+        year=list(f['startdate'])[0]
         area_name = 'area_'+year
         f[area_name] = f['area_sqkm']
         
@@ -89,6 +90,6 @@ def lake_area_change(indir):
     
 
 if __name__ == "__main__":  
-    file1 = '*IML-fv2.shp'
+    file1 = 'misc/iml_2016-2025/final_v4/*0101-ESA-GRIML-IML-fv4.gpkg'
     gdf_all = lake_area_change(file1)
     # gdf_all.to_file('ALL-ESA-GRIML-IML-MERGED-fv1_areal_change.shp')

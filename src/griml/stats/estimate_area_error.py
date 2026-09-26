@@ -64,18 +64,22 @@ def estimate_area_error(infile):
         perc.append((j['area_sqkm_diff']/max([j['area_sqkm_x'],j['area_sqkm_y']]))*100)
     all_common_lakes['diff_perc']=perc      
 
+    print(all_common_lakes)
+    print(all_common_lakes.columns)
 
     # Calculate average and median difference, and average percentage        
     average = np.average(all_common_lakes['area_sqkm_diff'])
     median = np.median(all_common_lakes['area_sqkm_diff'])
     average_percentage = np.average(all_common_lakes['diff_perc'])
+    total = sum(all_common_lakes['area_sqkm_diff'])
     
     print('Computed from ' + str(len(all_common_lakes)) + ' lakes')
     print('Average difference: '+str(average))
     print('Median difference: '+str(median))
     print('Average percentage difference: '+str(average_percentage))
+    print('Total difference: ' + str(total))
 
 if __name__ == "__main__":
-    indir = '*IML_fv2.gpkg'
+    indir = 'misc/iml_2016-2025/final_v4/*0101-ESA-GRIML-IML-fv4.gpkg'
     infiles = sorted(list(glob.glob(indir)))
     estimate_area_error(infiles)

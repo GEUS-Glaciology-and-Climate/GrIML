@@ -7,8 +7,7 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 from matplotlib.patches import Patch
 
-# %%
-workspace1 = '*IML-fv2.shp'
+workspace1 = 'misc/iml_2016-2025/final_v4/*0101-ESA-GRIML-IML-fv4.gpkg'
 out_dir = 'out/'
 
 geofiles=[]
@@ -17,8 +16,12 @@ for f in list(sorted(glob.glob(workspace1))):
     print(Path(f).stem)
     geofile = gp.read_file(f)
     ag = geofile.dissolve(by='lake_id')
+    print(str(Path(f).stem) + ": " + str((len(ag))))
     geofiles.append(geofile)
     aggfiles.append(ag)
+
+print(geofiles[0].columns)
+print(aggfiles[0].columns)
 
 # %%
 fsize1 = 14
@@ -72,10 +75,10 @@ for ag in aggfiles:
         ice_sheet_abun[i].append(icesheet['region'].value_counts()[b[i]])
         ice_cap_abun[i].append(icecap['region'].value_counts()[b[i]])
 
-years=list(range(2016,2024, 1))
+years=list(range(2016,2026, 1))
 
-bottom1=np.zeros(8)
-bottom2=np.zeros(8)
+bottom1=np.zeros(10)
+bottom2=np.zeros(10)
 
 for i in range(len(ice_sheet_abun)):
     p1 = ax1.bar(years, ice_sheet_abun[i], 0.5, color=c1[i],  label=b[i], bottom=bottom1)
@@ -172,6 +175,6 @@ ax4.set_yticklabels(['0.0','1.0','2.0', ''])
 # fig.tight_layout(pad=3.0)
 # plt.subplots_adjust(wspace=0, hspace=0)
 plt.show()
-#plt.savefig(out_dir+'lake_change_by_region.png', dpi=300)
+# plt.savefig('/home/pho/python_workspace/GrIML/misc/iml_2016-2025/figures/lake_change_by_region.png', dpi=300)
 
 

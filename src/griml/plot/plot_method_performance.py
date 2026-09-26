@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import Patch, FancyBboxPatch
 
 # %%
-workspace1 = '*IML-fv2.shp'
+workspace1 = '*IML-fv4.shp'
 out_dir = 'out/'
 
 aggfiles = []

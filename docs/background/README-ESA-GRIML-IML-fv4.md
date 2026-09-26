@@ -32,7 +32,7 @@ The annual inventory files (*\<YYYYMMDD\>-ESA-GRIML-IML-\<version\>.gpkg*) provi
 
 All data were compiled and filtered in a semi-automated approach. Data was filtered to within 1 km of the ice margin using a mask provided as part of [Klimadatastyrelsen Åbent Land Grønland vector dataset](https://dataforsyningen.dk/data/4771). Each detected lake was then verified manually. The methodology is open-source and provided in the associated [Github repository](https://github.com/GEUS-Glaciology-and-Climate/GrIML) for full reproducibility.
 
-The inventory series was created to better understand the impact of ice-marginal lake change on the future sea level budget and the terrestrial and marine landscapes of Greenland, such as its ecosystems and human activities. The dataset is a complete inventory series of Greenland, with no absent data.
+The inventory series was created to better understand the impact of ice-marginal lake change on the future sea level budget and the terrestrial and marine landscapes of Greenland, such as its ecosystems and human activities. The dataset is a complete inventory series of Greenland, with no absent data. For more information on the dataset, please refer to the [data description paper](https://doi.org/10.5194/essd-17-6331-2025).
 
 ### Data format
 
@@ -50,18 +50,18 @@ The overview dataset file (*ALL-ESA-GRIML-IML-\<version\>.gpkg*) contains the fo
 | `margin`	| Type of margin that the lake is adjacent to (`ICE_SHEET`, `ICE_CAP`)   | String |
 | `region`	| Region that lake is located, as defined by [Mouginot and Rignot (2019)](https://doi.org/10.7280/D1WT11) (`NW`, `NO`, `NE`, `CE`, `SE`, `SW`, `CW`)       	| String |
 | `area_all`	| Areal extent from all classifications, in square kilometres  | Float |
-| `area_<year>`	| Areal extent from automatic classifications for each year (`area_2016`, `area_2017`, `area_2018`...), in square kilometres  | Float |
+| `area_\<year>\`	| Areal extent from automatic classifications for each year (`area_2016`, `area_2017`, `area_2018`...), in square kilometres  | Float |
 | `attached_up_to`	| Year that lake was attached up until  | String |
 | `length_km`	| Length of polygon/s in kilometres         		| Float |
-| `centroid`	| Centroid position (x,y) of lake, based on all classifications throughout the inventory series. Coordinates are provided in the WGS NSIDC Sea Ice Polar Stereographic North (EPSG:3413) projected coordinate system | String |
+| `centroid`	| Centroid position (x,y) of lake, based on all classifications throughout the inventory series | String |
 | `glof_lake`	| Flag to signify whether the lake is a known GLOF (Glacial Lake Outburst Flood) lake, where `Yes` signifies it is a known GLOF lake and `No` signifies that it has not been known as a GLOF lake. GLOF information is provided by [Dømgaard et al. (2024)](https://doi.org/10.22008/FK2/K1CM4K) | String |
 | `drain_yrs`	| List of years of known GLOF events, provided if `glof_lake == yes`. GLOF information is provided by [Dømgaard et al. (2024)](https://doi.org/10.22008/FK2/K1CM4K) | String |
-| `t_aver_<year>`	| Average lake surface temperature estimate (in degrees Celsius) for each year (`t_aver_2016`, `t_aver_2017`, `t_aver_2018`...), derived from the Landsat 8/9 OLI/TIRS Collection 2 Level 2 surface temperature data product  | Float |
-| `t_max_<year>`	| Maximum pixel lake surface temperature estimate (in degrees Celsius) for each year, derived from the Landsat 8/9 OLI/TIRS Collection 2 Level 2 surface temperature data product  | Float |
-| `t_min_<year>`	| Minimum pixel lake surface temperature estimate (in degrees Celsius) for each year, derived from the Landsat 8/9 OLI/TIRS Collection 2 Level 2 surface temperature data product  | Float |
-| `t_stdev_<year>`	| Average lake surface temperature estimate standard deviation for each year, derived from the Landsat 8/9 OLI/TIRS Collection 2 Level 2 surface temperature data product  | Float |
-| `t_count_<year>`	| Number of Landsat 8/9 OLI/TIRS Collection 2 Level 2 scenes that lake surface temperature information were derived from. Scenes are only selected from the month of August for each inventory year  | Integer |
-| `t_date_<year>`	| Datetime of all Landsat 8/9 OLI/TIRS Collection 2 Level 2 scene acquisitions that lake surface temperature information are derived from for each inventory year  | String |
+| `t_aver_\<year>\`	| Average lake surface temperature estimate (in degrees Celsius) for each year (`t_aver_2016`, `t_aver_2017`, `t_aver_2018`...), derived from the Landsat 8/9 OLI/TIRS Collection 2 Level 2 surface temperature data product  | Float |
+| `t_max_\<year>\`	| Maximum pixel lake surface temperature estimate (in degrees Celsius) for each year, derived from the Landsat 8/9 OLI/TIRS Collection 2 Level 2 surface temperature data product  | Float |
+| `t_min_\<year>\`	| Minimum pixel lake surface temperature estimate (in degrees Celsius) for each year, derived from the Landsat 8/9 OLI/TIRS Collection 2 Level 2 surface temperature data product  | Float |
+| `t_stdev_\<year>\`	| Average lake surface temperature estimate standard deviation for each year, derived from the Landsat 8/9 OLI/TIRS Collection 2 Level 2 surface temperature data product  | Float |
+| `t_count_\<year>\`	| Number of Landsat 8/9 OLI/TIRS Collection 2 Level 2 scenes that lake surface temperature information were derived from. Scenes are only selected from the month of August for each inventory year  | Integer |
+| `t_date_\<year>\`	| Datetime of all Landsat 8/9 OLI/TIRS Collection 2 Level 2 scene acquisitions that lake surface temperature information are derived from for each inventory year  | String |
 | `start_date` | Start date for classification image filtering 	| String  |
 | `end_date` 	| End date for classification image filtering     | String |
 | `method`		| Method of classification (`Automatic`, `DEM sink detection`, `Digitisation`)  | String |
@@ -83,15 +83,9 @@ Dataset files containing annual automatic classifications (*\<YYYYMMDD\>-ESA-GRI
 | `region`	| Region that lake is located, as defined by [Mouginot and Rignot (2019)](https://doi.org/10.7280/D1WT11) (`NW`, `NO`, `NE`, `CE`, `SE`, `SW`, `CW`)       	| String |
 | `area_sqkm`	| Areal extent of polygon/s in square kilometres  | Float |
 | `length_km`	| Length of polygon/s in kilometres         		| Float |
-| `t_aver`	| Average lake surface temperature estimate (in degrees Celsius), derived from the Landsat 8/9 OLI/TIRS Collection 2 Level 2 surface temperature data product  | Float |
-| `t_min`	| Minimum pixel lake surface temperature estimate (in degrees Celsius), derived from the Landsat 8/9 OLI/TIRS Collection 2 Level 2 surface temperature data product  | Float |
-| `t_max`	| Maximum pixel lake surface temperature estimate (in degrees Celsius), derived from the Landsat 8/9 OLI/TIRS Collection 2 Level 2 surface temperature data product  | Float |
-| `t_stdev`	| Average lake surface temperature estimate standard deviation, derived from the Landsat 8/9 OLI/TIRS Collection 2 Level 2 surface temperature data product  | Float |
-| `t_count`	| Number of Landsat 8/9 OLI/TIRS Collection 2 Level 2 scenes that lake surface temperature information were derived from. Scenes are only selected from the month of August  | Integer |
-| `t_date`	| Datetime of all Landsat 8/9 OLI/TIRS Collection 2 Level 2 scene acquisitions that lake surface temperature information are derived from  | String |
+| `centroid`	| Centroid position (x,y) of classification | String |
 | `method`		| Method of classification (`SAR`, `VIS`)  | String |
 | `source`     | Image source of classification (`S1`, `S2`)    | String  |
-| `num_src`          | Number of automatic classification methods that successfully classified the lake (`1`, `2`)     | Integer |
 | `start_date` | Start date for classification image filtering 	| String  |
 | `end_date` 	| End date for classification image filtering     | String |
 | `verified` | Flag to denote if the lake has been manually verified (`Yes`, `No`)   | String |
